@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Pemeriksaan Kondisi - SEHATIN</title>
+<link rel="stylesheet" href="../css/main.css" />
+<link rel="stylesheet" href="../css/pages/health-check.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" />
+</head>
+<body class="app-body">
+<div class="app-layout" id="app-layout">
+  <div class="app-main-column" id="app-main-column">
+    <main class="app-page">
+
+      <section id="hc-intro" class="section-stack">
+        <div class="hc-result-header">
+          <h1>Bagaimana kondisi kamu hari ini?</h1>
+          <p class="mt-4">Jawab beberapa pertanyaan untuk mendapatkan gambaran awal dan langkah yang bisa kamu lakukan.</p>
+        </div>
+        <div class="card hc-question-card">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="icon-chip"><i class="fa-solid fa-clipboard-check"></i></div>
+            <div>
+              <strong>10 Pertanyaan</strong>
+              <p class="text-small text-muted">Sekitar 3 menit, mencakup fisik, mental, tidur, dan gaya hidup.</p>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-block btn-lg" id="hc-start-btn">Mulai Pemeriksaan</button>
+        </div>
+        <div class="card hc-list-card" id="hc-history-summary"></div>
+      </section>
+
+      <section id="hc-question" class="section-stack" style="display:none;">
+        <div class="hc-progress-wrap hc-question-card">
+          <div class="hc-progress-label"><span id="hc-progress-text">Pertanyaan 1 dari 10</span><span id="hc-domain-text">Kondisi Fisik</span></div>
+          <div class="hc-progress-bar"><div class="hc-progress-fill" id="hc-progress-fill"></div></div>
+        </div>
+        <div class="card hc-question-card">
+          <h3 id="hc-question-text"></h3>
+          <p class="form-error is-visible" id="hc-validation-error" style="display:none;margin-top:12px;"><i class="fa-solid fa-circle-exclamation"></i> Pilih salah satu jawaban terlebih dahulu.</p>
+          <div id="hc-options" class="mt-4"></div>
+        </div>
+        <div class="hc-nav-row">
+          <button class="btn btn-secondary" id="hc-prev-btn">Sebelumnya</button>
+          <button class="btn btn-primary" id="hc-next-btn">Selanjutnya</button>
+        </div>
+      </section>
+
+      <section id="hc-result" class="section-stack" style="display:none;">
+        <div class="hc-result-header">
+          <div class="icon-chip" style="width:64px;height:64px;font-size:24px;margin:0 auto var(--space-4);"><i class="fa-solid fa-circle-check"></i></div>
+          <h1>Hasil Pemeriksaan Awal</h1>
+          <p class="mt-2">Ini bukan diagnosis, melainkan gambaran awal kondisimu hari ini.</p>
+        </div>
+
+        <div class="hc-overview-grid">
+          <div class="card hc-overview-item"><span class="text-small text-muted">Kondisi Umum</span><h3 class="mt-2" id="res-kondisi">-</h3></div>
+          <div class="card hc-overview-item"><span class="text-small text-muted">Tidur</span><h3 class="mt-2" id="res-tidur">-</h3></div>
+          <div class="card hc-overview-item"><span class="text-small text-muted">Aktivitas</span><h3 class="mt-2" id="res-aktivitas">-</h3></div>
+          <div class="card hc-overview-item"><span class="text-small text-muted">Stres</span><h3 class="mt-2" id="res-stres">-</h3></div>
+        </div>
+
+        <div class="card hc-list-card">
+          <h3>Hal yang perlu kamu perhatikan</h3>
+          <div id="res-attention" class="mt-4"></div>
+        </div>
+
+        <div class="card hc-list-card">
+          <h3>Langkah yang bisa kamu lakukan</h3>
+          <div id="res-recommendations" class="mt-4"></div>
+        </div>
+
+        <div id="res-serious-note" class="card hc-list-card" style="display:none;background:var(--danger-soft);border:none;">
+          <p style="color:#8a1f1f;">Pertimbangkan berkonsultasi dengan tenaga kesehatan untuk mendapatkan penanganan yang lebih tepat.</p>
+        </div>
+
+        <div class="hc-nav-row">
+          <a href="journal.html" class="btn btn-secondary">Buat Jurnal</a>
+          <a href="facilities.html" class="btn btn-primary">Lihat Fasilitas</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script src="../js/core/storage.js"></script>
+<script src="../js/core/utils.js"></script>
+<script src="../js/core/mock-data.js"></script>
+<script src="../js/core/auth.js"></script>
+<script src="../js/core/state.js"></script>
+<script src="../js/components/toast.js"></script>
+<script src="../js/components/modal.js"></script>
+<script src="../js/features/search.js"></script>
+<script src="../js/features/health-check.js"></script>
+<script src="../js/components/navbar.js"></script>
+<script src="../js/pages/health-check.js"></script>
+</body>
+</html>

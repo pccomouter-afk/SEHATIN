@@ -1,0 +1,65 @@
+:root {
+  --font-main: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+
+  --fs-h1-desktop: 48px;
+  --fs-h1-mobile: 32px;
+  --fs-h2-desktop: 34px;
+  --fs-h2-mobile: 26px;
+  --fs-h3-desktop: 24px;
+  --fs-h3-mobile: 20px;
+  --fs-body: 16px;
+  --fs-body-lg: 18px;
+  --fs-small: 14px;
+  --fs-xsmall: 13px;
+
+  --lh-tight: 1.2;
+  --lh-normal: 1.5;
+  --lh-loose: 1.7;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+}
+
+h1, .h1 {
+  font-size: var(--fs-h1-mobile);
+  font-weight: var(--fw-extrabold);
+  line-height: var(--lh-tight);
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+h2, .h2 {
+  font-size: var(--fs-h2-mobile);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+h3, .h3 {
+  font-size: var(--fs-h3-mobile);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  color: var(--text-primary);
+}
+
+p {
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  color: var(--text-secondary);
+}
+
+.text-small { font-size: var(--fs-small); }
+.text-xsmall { font-size: var(--fs-xsmall); }
+.text-muted { color: var(--text-muted); }
+.text-secondary { color: var(--text-secondary); }
+.text-primary-color { color: var(--primary); }
+
+@media (min-width: 1024px) {
+  h1, .h1 { font-size: var(--fs-h1-desktop); }
+  h2, .h2 { font-size: var(--fs-h2-desktop); }
+  h3, .h3 { font-size: var(--fs-h3-desktop); }
+}

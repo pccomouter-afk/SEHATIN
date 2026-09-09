@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Jurnal Kesehatan - SEHATIN</title>
+<link rel="stylesheet" href="../css/main.css" />
+<link rel="stylesheet" href="../css/pages/journal.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" />
+</head>
+<body class="app-body">
+<div class="app-layout" id="app-layout">
+  <div class="app-main-column" id="app-main-column">
+    <main class="app-page">
+      <div class="section-stack">
+        <div>
+          <h1>Jurnal Kesehatan</h1>
+          <p class="mt-2">Bagaimana perasaanmu hari ini? Catat kondisimu setiap hari.</p>
+        </div>
+
+        <div class="card insight-card">
+          <h3>Pola Kesehatanmu</h3>
+          <p class="mt-2" id="journal-insight-text">Memuat pola kesehatanmu...</p>
+        </div>
+
+        <div class="card">
+          <h3>Catat Hari Ini</h3>
+          <form id="journal-form" class="mt-4">
+            <div class="journal-form-grid">
+              <div class="journal-slider-group">
+                <label class="form-label">Mood <span id="mood-val">3</span>/5</label>
+                <input type="range" id="mood" min="1" max="5" value="3" />
+              </div>
+              <div class="journal-slider-group">
+                <label class="form-label">Energi <span id="energi-val">3</span>/5</label>
+                <input type="range" id="energi" min="1" max="5" value="3" />
+              </div>
+              <div class="journal-slider-group">
+                <label class="form-label">Tidur (jam) <span id="tidur-val">7</span></label>
+                <input type="range" id="tidur" min="0" max="12" value="7" />
+              </div>
+              <div class="journal-slider-group">
+                <label class="form-label">Hidrasi <span id="hidrasi-val">3</span>/5</label>
+                <input type="range" id="hidrasi" min="1" max="5" value="3" />
+              </div>
+            </div>
+            <div class="form-group mt-6">
+              <label class="form-label">Keluhan (jika ada)</label>
+              <input class="form-control" type="text" id="keluhan" placeholder="Contoh: sedikit pusing" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Catatan</label>
+              <textarea class="form-control" id="catatan" placeholder="Ceritakan harimu secara singkat..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Simpan Jurnal</button>
+          </form>
+        </div>
+
+        <div class="card" id="journal-history-card">
+          <h3>Riwayat Jurnal</h3>
+          <div id="journal-history-list" class="mt-4"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/core/storage.js"></script>
+<script src="../js/core/utils.js"></script>
+<script src="../js/core/mock-data.js"></script>
+<script src="../js/core/auth.js"></script>
+<script src="../js/core/state.js"></script>
+<script src="../js/components/toast.js"></script>
+<script src="../js/components/modal.js"></script>
+<script src="../js/features/search.js"></script>
+<script src="../js/features/journal.js"></script>
+<script src="../js/components/navbar.js"></script>
+<script src="../js/pages/journal.js"></script>
+</body>
+</html>

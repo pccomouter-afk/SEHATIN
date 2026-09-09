@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Masuk - SEHATIN</title>
+<link rel="stylesheet" href="../css/main.css" />
+<link rel="stylesheet" href="../css/pages/auth.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" />
+</head>
+<body class="app-body">
+<div class="auth-page">
+  <div class="auth-visual">
+    <div class="auth-shape auth-shape-1"></div>
+    <div class="auth-shape auth-shape-2"></div>
+    <div class="auth-visual-brand">
+      <div class="sidebar-brand-mark">S</div>
+      <span>SEHATIN</span>
+    </div>
+    <div class="auth-visual-copy">
+      <h2>Pahami Tubuhmu. Jaga Kesehatanmu.</h2>
+      <p>Masuk untuk melanjutkan pemeriksaan kondisi, memantau kebiasaan sehat, dan menemukan fasilitas kesehatan terdekat.</p>
+    </div>
+    <div class="auth-preview-card">
+      <div class="auth-preview-row"><span>Health Score hari ini</span><strong>82</strong></div>
+      <div class="auth-preview-row"><span>Tidur</span><strong>85</strong></div>
+      <div class="auth-preview-row"><span>Hidrasi</span><strong>72</strong></div>
+      <div class="auth-preview-row"><span>Aktivitas</span><strong>90</strong></div>
+    </div>
+  </div>
+
+  <div class="auth-form-side">
+    <div class="auth-card">
+      <div class="auth-card-brand">
+        <div class="sidebar-brand-mark">S</div>
+        <span style="font-weight:800;font-size:19px;">SEHATIN</span>
+      </div>
+      <h3>Masuk ke SEHATIN</h3>
+      <p class="text-secondary mt-2">Lanjutkan perjalanan sehatmu hari ini.</p>
+
+      <form id="login-form" class="mt-6" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="login-email">Email</label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-envelope input-icon"></i>
+            <input class="form-control" type="email" id="login-email" placeholder="nama@email.com" autocomplete="email" />
+          </div>
+          <span class="form-error" data-error-for="login-email"><i class="fa-solid fa-circle-exclamation"></i> Email tidak valid.</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="login-password">Kata Sandi</label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-lock input-icon"></i>
+            <input class="form-control" type="password" id="login-password" placeholder="Masukkan kata sandi" autocomplete="current-password" />
+            <button type="button" class="input-toggle" id="login-password-toggle" aria-label="Tampilkan kata sandi"><i class="fa-solid fa-eye"></i></button>
+          </div>
+          <span class="form-error" data-error-for="login-password"><i class="fa-solid fa-circle-exclamation"></i> Kata sandi wajib diisi.</span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Masuk</button>
+      </form>
+
+      <div class="auth-divider">atau</div>
+      <button class="btn btn-secondary btn-block" id="demo-login-btn"><i class="fa-solid fa-user-check"></i> Coba dengan Akun Demo</button>
+
+      <p class="auth-footer-link">Belum punya akun? <a href="register.html">Buat Akun</a></p>
+    </div>
+  </div>
+</div>
+
+<script src="../js/core/storage.js"></script>
+<script src="../js/core/utils.js"></script>
+<script src="../js/core/mock-data.js"></script>
+<script src="../js/core/auth.js"></script>
+<script src="../js/components/toast.js"></script>
+<script src="../js/pages/login.js"></script>
+</body>
+</html>

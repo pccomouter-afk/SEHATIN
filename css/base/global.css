@@ -1,0 +1,102 @@
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.app-body {
+  background: var(--bg-soft);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-padding-mobile);
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--page-padding-desktop);
+  }
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.app-main-column {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-page {
+  flex: 1;
+  padding: var(--space-5) var(--page-padding-mobile) calc(var(--bottom-nav-height) + var(--space-10) + env(safe-area-inset-bottom));
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .app-page {
+    padding: var(--space-8) var(--page-padding-desktop) var(--space-16);
+  }
+}
+
+.section-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+  .section-stack {
+    gap: var(--space-8);
+  }
+}
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.section-head h2, .section-head h3 {
+  margin-bottom: var(--space-1);
+}
+
+.link-more {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-semibold);
+  color: var(--primary-dark);
+  white-space: nowrap;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.fd-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-secondary);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-small);
+  margin-bottom: var(--space-4);
+}

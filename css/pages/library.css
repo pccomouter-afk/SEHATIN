@@ -1,0 +1,31 @@
+.library-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.library-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .library-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .library-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.article-detail-body {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.article-detail-body p {
+  color: var(--text-secondary);
+  line-height: var(--lh-loose);
+  margin-bottom: var(--space-4);
+}

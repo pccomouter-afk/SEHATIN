@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Pustaka Kesehatan - SEHATIN</title>
+<link rel="stylesheet" href="../css/main.css" />
+<link rel="stylesheet" href="../css/pages/library.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" />
+</head>
+<body class="app-body">
+<div class="app-layout" id="app-layout">
+  <div class="app-main-column" id="app-main-column">
+    <main class="app-page">
+
+      <div id="library-list-view">
+        <h1>Pustaka kesehatan untuk membantumu memahami tubuh</h1>
+        <p class="mt-2 mb-6">Artikel singkat seputar tidur, nutrisi, aktivitas, dan kesehatan mental.</p>
+
+        <div class="library-toolbar">
+          <div class="input-wrap">
+            <i class="fa-solid fa-magnifying-glass input-icon"></i>
+            <input class="form-control" type="text" id="library-search-input" placeholder="Cari artikel..." />
+          </div>
+          <div class="facilities-filter-row" id="library-filter-row">
+            <button class="select-pill is-selected" data-category="Semua">Semua</button>
+            <button class="select-pill" data-category="Nutrisi">Nutrisi</button>
+            <button class="select-pill" data-category="Tidur">Tidur</button>
+            <button class="select-pill" data-category="Aktivitas">Aktivitas</button>
+            <button class="select-pill" data-category="Kesehatan Mental">Kesehatan Mental</button>
+            <button class="select-pill" data-category="Pertolongan Pertama">Pertolongan Pertama</button>
+            <button class="select-pill" data-category="Gaya Hidup">Gaya Hidup</button>
+          </div>
+        </div>
+
+        <div class="library-grid" id="library-grid"></div>
+      </div>
+
+      <div id="library-detail-view" style="display:none;">
+        <a href="library.html" class="fd-back-link"><i class="fa-solid fa-arrow-left"></i> Kembali ke Pustaka</a>
+        <div class="article-detail-body">
+          <span class="badge badge-blue" id="ad-category"></span>
+          <h1 class="mt-4" id="ad-title"></h1>
+          <p class="text-small text-muted mt-2" id="ad-meta"></p>
+          <div class="mt-6" id="ad-content"></div>
+          <button class="btn btn-secondary" id="ad-save-btn"><i class="fa-solid fa-bookmark"></i> Simpan Artikel</button>
+
+          <div class="mt-8">
+            <h3>Artikel Terkait</h3>
+            <div class="library-grid mt-4" id="ad-related"></div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="../js/core/storage.js"></script>
+<script src="../js/core/utils.js"></script>
+<script src="../js/core/mock-data.js"></script>
+<script src="../js/core/auth.js"></script>
+<script src="../js/core/state.js"></script>
+<script src="../js/components/toast.js"></script>
+<script src="../js/components/modal.js"></script>
+<script src="../js/features/search.js"></script>
+<script src="../js/features/library.js"></script>
+<script src="../js/components/navbar.js"></script>
+<script src="../js/pages/library.js"></script>
+</body>
+</html>

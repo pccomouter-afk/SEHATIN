@@ -1,0 +1,60 @@
+const MockData = {
+  facilities: [
+    { id: "fac_1", name: "Klinik Sehat Bersama", type: "Klinik", rating: 4.7, distance: 0.8, status: "Buka", address: "Jl. Melati Raya No. 12, Jakarta Selatan", hours: "07.00 - 21.00", phone: "021-5551234", services: ["Pemeriksaan Umum", "Vaksinasi", "Konsultasi Gizi"], facilities: ["Parkir", "Apotek", "Ruang Tunggu Ber-AC"], lat: -6.261, lng: 106.781, about: "Klinik yang melayani pemeriksaan kesehatan umum dan konsultasi keluarga dengan tenaga medis berpengalaman." },
+    { id: "fac_2", name: "RS Harapan Kita Medika", type: "Rumah Sakit", rating: 4.5, distance: 2.3, status: "Buka 24 Jam", address: "Jl. Sudirman No. 88, Jakarta Pusat", hours: "24 Jam", phone: "021-5559876", services: ["UGD", "Rawat Inap", "Spesialis Jantung", "Laboratorium"], facilities: ["Parkir Luas", "Apotek 24 Jam", "ATM Center"], lat: -6.2088, lng: 106.8228, about: "Rumah sakit rujukan dengan layanan gawat darurat dan berbagai poliklinik spesialis." },
+    { id: "fac_3", name: "Apotek Sehat Selalu", type: "Apotek", rating: 4.6, distance: 0.4, status: "Buka", address: "Jl. Kenanga No. 5, Jakarta Selatan", hours: "08.00 - 22.00", phone: "021-5552211", services: ["Penebusan Resep", "Konsultasi Obat", "Layanan Antar"], facilities: ["Parkir Motor", "Pembayaran Digital"], lat: -6.2648, lng: 106.7889, about: "Apotek dengan stok lengkap dan layanan konsultasi obat oleh apoteker berlisensi." },
+    { id: "fac_4", name: "UGD Siaga Medika", type: "UGD", rating: 4.4, distance: 3.1, status: "Buka 24 Jam", address: "Jl. Gatot Subroto No. 40, Jakarta Selatan", hours: "24 Jam", phone: "021-5553344", services: ["Gawat Darurat", "Ambulans", "Observasi"], facilities: ["Parkir", "Ambulans Siaga"], lat: -6.2297, lng: 106.8175, about: "Unit gawat darurat yang siap menangani kondisi darurat kapan saja." },
+    { id: "fac_5", name: "Klinik Keluarga Ceria", type: "Klinik", rating: 4.8, distance: 1.2, status: "Tutup", address: "Jl. Anggrek No. 20, Jakarta Selatan", hours: "08.00 - 20.00", phone: "021-5554567", services: ["Pemeriksaan Anak", "Imunisasi", "KB"], facilities: ["Ruang Bermain Anak", "Parkir"], lat: -6.2555, lng: 106.7912, about: "Klinik ramah keluarga dengan layanan khusus kesehatan ibu dan anak." },
+    { id: "fac_6", name: "RS Bunda Sejahtera", type: "Rumah Sakit", rating: 4.6, distance: 4.0, status: "Buka 24 Jam", address: "Jl. Diponegoro No. 15, Jakarta Pusat", hours: "24 Jam", phone: "021-5557788", services: ["Kebidanan", "Bedah", "Radiologi"], facilities: ["Parkir", "Kantin", "Musala"], lat: -6.194, lng: 106.83, about: "Rumah sakit yang berfokus pada layanan kebidanan, kandungan, dan bedah umum." },
+  ],
+  articles: [
+    { id: "art_1", title: "Cara Sederhana Menjaga Kualitas Tidur", category: "Tidur", readTime: 5, summary: "Kualitas tidur memengaruhi energi dan mood harianmu. Berikut kebiasaan sederhana yang bisa membantu.", content: "Tidur yang berkualitas dimulai dari rutinitas yang konsisten. Cobalah tidur dan bangun di jam yang sama setiap hari, hindari layar gawai satu jam sebelum tidur, dan jaga suhu kamar tetap sejuk. Aktivitas ringan seperti membaca atau meregangkan tubuh sebelum tidur juga dapat membantu tubuh lebih rileks. Jika kamu sering terbangun di malam hari, perhatikan asupan kafein dan cairan menjelang malam." },
+    { id: "art_2", title: "Pentingnya Cukup Minum Air Setiap Hari", category: "Nutrisi", readTime: 4, summary: "Hidrasi yang cukup membantu menjaga konsentrasi dan fungsi tubuh secara keseluruhan.", content: "Tubuh membutuhkan cairan yang cukup untuk menjalankan hampir seluruh fungsinya, mulai dari pencernaan hingga konsentrasi. Sebagai gambaran umum, banyak orang dewasa disarankan minum sekitar 2 liter air per hari, meski kebutuhan setiap orang bisa berbeda tergantung aktivitas dan cuaca. Membawa botol minum dan menjadwalkan waktu minum secara berkala dapat membantumu memenuhi target hidrasi harian." },
+    { id: "art_3", title: "Aktivitas Ringan yang Bisa Dilakukan Sehari-hari", category: "Aktivitas", readTime: 6, summary: "Tidak perlu olahraga berat, aktivitas ringan pun memberi manfaat besar bagi tubuh.", content: "Berjalan kaki selama 20-30 menit, naik turun tangga, atau meregangkan tubuh setiap beberapa jam saat bekerja dapat memberi manfaat kesehatan yang signifikan. Konsistensi lebih penting daripada intensitas ketika baru memulai kebiasaan aktif. Mulailah dengan target kecil yang realistis dan tingkatkan secara bertahap." },
+    { id: "art_4", title: "Mengelola Stres di Tengah Kesibukan", category: "Kesehatan Mental", readTime: 7, summary: "Stres yang tidak dikelola dapat memengaruhi kesehatan fisik dan mental dalam jangka panjang.", content: "Mengenali sumber stres adalah langkah pertama untuk mengelolanya. Teknik pernapasan sederhana, meluangkan waktu untuk aktivitas yang disukai, serta berbicara dengan orang terdekat dapat membantu meringankan beban pikiran. Jika stres terasa berat dan berkepanjangan, pertimbangkan untuk berbicara dengan tenaga profesional." },
+    { id: "art_5", title: "Langkah Dasar Pertolongan Pertama di Rumah", category: "Pertolongan Pertama", readTime: 8, summary: "Mengetahui langkah dasar pertolongan pertama dapat sangat membantu dalam situasi darurat ringan.", content: "Untuk luka ringan, bersihkan area luka dengan air mengalir dan tutup dengan perban steril. Untuk luka bakar ringan, alirkan air dingin pada area yang terkena selama beberapa menit. Selalu simpan nomor kontak darurat dan fasilitas kesehatan terdekat agar mudah dihubungi saat dibutuhkan." },
+    { id: "art_6", title: "Membangun Kebiasaan Sehat Secara Bertahap", category: "Gaya Hidup", readTime: 5, summary: "Perubahan kecil yang konsisten lebih efektif dibanding perubahan besar yang sulit dipertahankan.", content: "Mulailah dengan satu kebiasaan kecil, misalnya minum segelas air setiap bangun tidur atau berjalan kaki 10 menit setiap hari. Setelah kebiasaan itu terasa alami, tambahkan kebiasaan sehat lainnya. Mencatat perkembangan di jurnal juga dapat membantu menjaga motivasi." },
+    { id: "art_7", title: "Mengenali Tanda Tubuh Butuh Istirahat", category: "Kesehatan Mental", readTime: 4, summary: "Tubuh sering memberi sinyal ketika sudah waktunya untuk beristirahat.", content: "Sulit berkonsentrasi, mudah tersinggung, dan tubuh terasa lebih lelah dari biasanya bisa menjadi sinyal bahwa tubuh membutuhkan istirahat. Memberi jeda sejenak, tidur cukup, dan mengurangi beban aktivitas sementara waktu dapat membantu tubuh dan pikiran pulih kembali." },
+    { id: "art_8", title: "Nutrisi Seimbang untuk Aktivitas Harian", category: "Nutrisi", readTime: 6, summary: "Pola makan seimbang membantu menjaga energi sepanjang hari.", content: "Usahakan setiap piring makan berisi kombinasi karbohidrat, protein, sayur, dan buah. Hindari melewatkan waktu makan karena dapat memengaruhi energi dan konsentrasi. Camilan sehat seperti buah potong atau kacang-kacangan bisa menjadi pilihan di antara waktu makan utama." },
+  ],
+  dailyPlan: [
+    { id: "plan_water", label: "Minum air", target: 5, unit: "gelas" },
+    { id: "plan_steps", label: "Berjalan", target: 6000, unit: "langkah" },
+    { id: "plan_rest", label: "Istirahat", target: 3, unit: "jeda" },
+    { id: "plan_journal", label: "Jurnal", target: 1, unit: "catatan" },
+  ],
+  notifications: [
+    { id: "notif_1", icon: "fa-droplet", text: "Waktunya minum air. Sudah 1,4 liter hari ini.", time: Date.now() - 1000 * 60 * 25, unread: true, link: "health.html" },
+    { id: "notif_2", icon: "fa-book-medical", text: "Jangan lupa mengisi jurnal kesehatan hari ini.", time: Date.now() - 1000 * 60 * 90, unread: true, link: "journal.html" },
+    { id: "notif_3", icon: "fa-newspaper", text: "Artikel baru tersedia di Pustaka Kesehatan.", time: Date.now() - 1000 * 60 * 60 * 5, unread: false, link: "library.html" },
+    { id: "notif_4", icon: "fa-heart-pulse", text: "Hasil pemeriksaan kondisi minggu lalu siap dilihat kembali.", time: Date.now() - 1000 * 60 * 60 * 24, unread: false, link: "health-check.html" },
+  ],
+  healthCheckQuestions: [
+    { id: "q1", domain: "Kondisi Fisik", type: "multi", text: "Apa yang kamu rasakan saat ini?", options: ["Sakit kepala", "Mudah lelah", "Batuk", "Pilek", "Mual", "Nyeri tubuh", "Pusing", "Tidak ada keluhan"] },
+    { id: "q2", domain: "Kondisi Fisik", type: "single", text: "Seberapa mengganggu kondisi tersebut?", options: ["Ringan", "Sedang", "Berat"] },
+    { id: "q3", domain: "Kondisi Fisik", type: "single", text: "Sudah berapa lama kamu merasakannya?", options: ["Kurang dari 1 hari", "1-3 hari", "Lebih dari 3 hari"] },
+    { id: "q4", domain: "Mental dan Emosi", type: "single", text: "Bagaimana suasana hatimu beberapa hari terakhir?", options: ["Sangat baik", "Baik", "Biasa saja", "Kurang baik", "Sangat buruk"] },
+    { id: "q5", domain: "Mental dan Emosi", type: "single", text: "Seberapa sering kamu merasa stres akhir-akhir ini?", options: ["Jarang", "Kadang-kadang", "Sering", "Hampir setiap hari"] },
+    { id: "q6", domain: "Mental dan Emosi", type: "single", text: "Apakah kamu merasa sulit berkonsentrasi?", options: ["Tidak", "Kadang", "Sering"] },
+    { id: "q7", domain: "Tidur", type: "single", text: "Rata-rata berapa lama kamu tidur?", options: ["Kurang dari 5 jam", "5-6 jam", "6-7 jam", "7-9 jam", "Lebih dari 9 jam"] },
+    { id: "q8", domain: "Tidur", type: "single", text: "Bagaimana kualitas tidurmu?", options: ["Sangat baik", "Baik", "Biasa", "Kurang", "Sangat buruk"] },
+    { id: "q9", domain: "Gaya Hidup", type: "single", text: "Seberapa aktif kamu hari ini?", options: ["Sangat aktif", "Aktif", "Cukup", "Kurang aktif"] },
+    { id: "q10", domain: "Gaya Hidup", type: "single", text: "Berapa banyak air yang kamu minum hari ini?", options: ["Kurang dari 1 liter", "1-2 liter", "2-3 liter", "Lebih dari 3 liter"] },
+  ],
+  wellnessQuestions: [
+    { id: "w1", text: "Bagaimana mood kamu secara umum minggu ini?", options: ["Sangat baik", "Baik", "Biasa saja", "Kurang baik", "Sangat buruk"] },
+    { id: "w2", text: "Seberapa sering kamu merasa cemas belakangan ini?", options: ["Jarang", "Kadang-kadang", "Sering", "Hampir setiap hari"] },
+    { id: "w3", text: "Bagaimana tingkat energimu sehari-hari?", options: ["Sangat baik", "Cukup", "Rendah", "Sangat rendah"] },
+    { id: "w4", text: "Bagaimana kualitas tidurmu belakangan ini?", options: ["Sangat baik", "Baik", "Kurang", "Sangat buruk"] },
+    { id: "w5", text: "Seberapa mudah kamu berkonsentrasi hari-hari ini?", options: ["Mudah", "Cukup mudah", "Cukup sulit", "Sangat sulit"] },
+    { id: "w6", text: "Apakah kamu merasa cukup memiliki waktu istirahat?", options: ["Cukup", "Kadang cukup", "Jarang cukup", "Tidak pernah cukup"] },
+  ],
+  faq: [
+    { q: "Apa itu SEHATIN?", a: "SEHATIN adalah teman digital kesehatan yang membantu kamu memahami kondisi harian, membangun kebiasaan sehat, mencatat kondisi, dan menemukan fasilitas kesehatan terdekat." },
+    { q: "Apakah SEHATIN mendiagnosis penyakit?", a: "Tidak. SEHATIN bukan alat diagnosis. Hasil pemeriksaan di SEHATIN hanya berupa gambaran awal dan rekomendasi langkah, bukan diagnosis medis." },
+    { q: "Bagaimana data disimpan?", a: "Seluruh data pada versi ini disimpan secara lokal di perangkatmu menggunakan localStorage, tanpa dikirim ke server manapun." },
+    { q: "Bagaimana cara menyimpan jurnal?", a: "Buka menu Jurnal, isi kondisi harianmu, lalu tekan tombol Simpan Jurnal. Catatanmu akan otomatis tersimpan di Riwayat Jurnal." },
+  ],
+};
+
+window.MockData = MockData;

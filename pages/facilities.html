@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Fasilitas Kesehatan - SEHATIN</title>
+<link rel="stylesheet" href="../css/main.css" />
+<link rel="stylesheet" href="../css/pages/facilities.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body class="app-body">
+<div class="app-layout" id="app-layout">
+  <div class="app-main-column" id="app-main-column">
+    <main class="app-page">
+      <h1>Cari fasilitas kesehatan di sekitar kamu</h1>
+      <p class="mt-2 mb-6">Temukan klinik, rumah sakit, apotek, dan UGD terdekat.</p>
+
+      <div class="facilities-toolbar">
+        <div class="facilities-search input-wrap">
+          <i class="fa-solid fa-magnifying-glass input-icon"></i>
+          <input class="form-control" type="text" id="facility-search-input" placeholder="Cari nama atau jenis fasilitas..." />
+        </div>
+        <div class="facilities-filter-row" id="facility-filter-row">
+          <button class="select-pill is-selected" data-type="Semua">Semua</button>
+          <button class="select-pill" data-type="Klinik">Klinik</button>
+          <button class="select-pill" data-type="Rumah Sakit">Rumah Sakit</button>
+          <button class="select-pill" data-type="Apotek">Apotek</button>
+          <button class="select-pill" data-type="UGD">UGD</button>
+          <button class="select-pill" id="favorite-filter-btn" data-type="favorit">Favorit</button>
+        </div>
+      </div>
+
+      <div class="facility-map" id="facility-map"></div>
+
+      <div class="facilities-list" id="facilities-list"></div>
+    </main>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="../js/core/storage.js"></script>
+<script src="../js/core/utils.js"></script>
+<script src="../js/core/mock-data.js"></script>
+<script src="../js/core/auth.js"></script>
+<script src="../js/core/state.js"></script>
+<script src="../js/components/toast.js"></script>
+<script src="../js/components/modal.js"></script>
+<script src="../js/features/search.js"></script>
+<script src="../js/features/facilities.js"></script>
+<script src="../js/components/navbar.js"></script>
+<script src="../js/pages/facilities.js"></script>
+</body>
+</html>

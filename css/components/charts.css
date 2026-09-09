@@ -1,0 +1,109 @@
+.trend-chart {
+  width: 100%;
+  height: auto;
+}
+
+.trend-chart-line {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.trend-chart-area {
+  fill: url(#trendGradient);
+  opacity: 0.5;
+}
+
+.trend-chart-dot {
+  fill: var(--bg);
+  stroke: var(--primary);
+  stroke-width: 3;
+}
+
+.trend-chart-axis text {
+  font-size: 11px;
+  fill: var(--text-muted);
+  font-family: var(--font-main);
+}
+
+.score-ring-wrap {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  flex-shrink: 0;
+}
+
+.score-ring-bg {
+  fill: none;
+  stroke: var(--bg-muted);
+  stroke-width: 10;
+}
+
+.score-ring-fill {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 10;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 1s ease;
+}
+
+.score-ring-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-ring-value {
+  font-size: 34px;
+  font-weight: var(--fw-extrabold);
+  color: var(--navy);
+  line-height: 1;
+}
+
+.score-ring-status {
+  font-size: var(--fs-xsmall);
+  color: var(--primary-dark);
+  font-weight: var(--fw-semibold);
+  margin-top: 4px;
+}
+
+.score-breakdown-popover {
+  position: absolute;
+  z-index: 40;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-4);
+  width: 260px;
+  display: none;
+}
+
+.score-breakdown-popover.is-visible {
+  display: block;
+}
+
+.score-breakdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 6px 0;
+  font-size: var(--fs-small);
+}
+
+.score-breakdown-row .metric-progress {
+  width: 90px;
+}
+
+.progress-ring-mini {
+  width: 44px;
+  height: 44px;
+}

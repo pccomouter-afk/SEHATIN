@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Dashboard - SEHATIN</title>
+<link rel="stylesheet" href="../css/main.css" />
+<link rel="stylesheet" href="../css/pages/dashboard.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" />
+</head>
+<body class="app-body">
+<div class="app-layout" id="app-layout">
+  <div class="app-main-column" id="app-main-column">
+    <main class="app-page">
+      <div class="section-stack">
+
+        <div class="dash-hero">
+          <div class="card dash-greeting-card">
+            <h2 id="greeting-text">Selamat datang</h2>
+            <p class="mt-2">Bagaimana kabarmu hari ini? Yuk cek kondisi dan rutinitas sehatmu.</p>
+            <a href="health-check.html" class="btn btn-primary mt-4" style="align-self:flex-start;">
+              <i class="fa-solid fa-clipboard-check"></i> Mulai Pemeriksaan
+            </a>
+          </div>
+
+          <div class="card dash-score-card" id="score-card">
+            <div class="score-ring-wrap">
+              <svg viewBox="0 0 128 128" width="128" height="128">
+                <defs>
+                  <linearGradient id="trendGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#41ca4e" stop-opacity="0.35" />
+                    <stop offset="100%" stop-color="#41ca4e" stop-opacity="0" />
+                  </linearGradient>
+                </defs>
+                <circle class="score-ring-bg" cx="64" cy="64" r="54"></circle>
+                <circle class="score-ring-fill" cx="64" cy="64" r="54"></circle>
+              </svg>
+              <div class="score-ring-center">
+                <span class="score-ring-value" id="score-value">0</span>
+                <span class="score-ring-status" id="score-status">Memuat</span>
+              </div>
+            </div>
+            <div class="dash-score-info">
+              <h3>Health Score</h3>
+              <p class="mt-2">Skor ini dihitung dari tidur, hidrasi, aktivitas, mood, stres, dan pemulihanmu.</p>
+              <div class="badge badge-green dash-score-change" id="score-change">+0 dari kemarin</div>
+            </div>
+            <div class="score-breakdown-popover" id="score-breakdown"></div>
+          </div>
+        </div>
+
+        <section>
+          <div class="section-head">
+            <h2>Ringkasan Hari Ini</h2>
+          </div>
+          <div class="grid grid-metrics" id="metrics-grid"></div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <h2>Aksi Cepat</h2>
+          </div>
+          <div class="quick-action-grid">
+            <a class="quick-action" href="health-check.html"><div class="icon-chip"><i class="fa-solid fa-clipboard-check"></i></div>Pemeriksaan</a>
+            <a class="quick-action" href="journal.html"><div class="icon-chip"><i class="fa-solid fa-book-medical"></i></div>Jurnal</a>
+            <button class="quick-action" id="quick-add-water"><div class="icon-chip"><i class="fa-solid fa-droplet"></i></div>Tambah Air</button>
+            <a class="quick-action" href="health.html"><div class="icon-chip"><i class="fa-solid fa-person-walking"></i></div>Catat Aktivitas</a>
+          </div>
+        </section>
+
+        <div class="grid grid-2">
+          <section class="card">
+            <div class="section-head">
+              <h3>Tren Kesehatan 7 Hari</h3>
+            </div>
+            <svg class="trend-chart" id="trend-chart" viewBox="0 0 320 160" preserveAspectRatio="none"></svg>
+          </section>
+
+          <section class="card">
+            <div class="section-head">
+              <h3>Rencana Sehat Hari Ini</h3>
+            </div>
+            <div id="daily-plan-list"></div>
+          </section>
+        </div>
+
+        <section class="card wellness-entry-card">
+          <div>
+            <h3>Kondisi pikiranmu juga penting</h3>
+            <p class="mt-2">Cek suasana hati dan tingkat stresmu lewat pemeriksaan singkat.</p>
+          </div>
+          <a href="health.html?tab=wellness" class="btn btn-accent">Cek Kondisi Emosiku</a>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <h2>Aktivitas Terbaru</h2>
+            <a href="health.html" class="link-more">Lihat semua</a>
+          </div>
+          <div class="card" id="recent-activity-card"></div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <h2>Rekomendasi Untukmu</h2>
+          </div>
+          <div class="grid grid-3" id="recommendation-grid"></div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/core/storage.js"></script>
+<script src="../js/core/utils.js"></script>
+<script src="../js/core/mock-data.js"></script>
+<script src="../js/core/auth.js"></script>
+<script src="../js/core/state.js"></script>
+<script src="../js/components/toast.js"></script>
+<script src="../js/components/modal.js"></script>
+<script src="../js/features/search.js"></script>
+<script src="../js/features/health-score.js"></script>
+<script src="../js/components/navbar.js"></script>
+<script src="../js/pages/dashboard.js"></script>
+</body>
+</html>
