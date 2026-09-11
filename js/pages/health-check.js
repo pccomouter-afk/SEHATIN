@@ -1,5 +1,10 @@
 (function () {
-  AppShell.init("health-check", "Pemeriksaan Kondisi");
+  if (!Auth.guard()) return;
+  Sidebar.init();
+  NavbarTop.init('Pemeriksaan Kondisi');
+  ProfileDrawer.init();
+  BottomNav.init();
+  Router.init();
 
   const questions = HealthCheckEngine.questions;
   let currentIndex = 0;

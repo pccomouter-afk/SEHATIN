@@ -1,5 +1,10 @@
 (function () {
-  AppShell.init("health", "Kesehatan Saya");
+  if (!Auth.guard()) return;
+  Sidebar.init();
+  NavbarTop.init('Kesehatan Saya');
+  ProfileDrawer.init();
+  BottomNav.init();
+  Router.init();
 
   function switchTab(tab) {
     Utils.qsa(".health-tab-btn").forEach(function(btn) {

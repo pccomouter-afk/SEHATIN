@@ -1,5 +1,10 @@
 (function () {
-  AppShell.init("library", "Pustaka Kesehatan");
+  if (!Auth.guard()) return;
+  Sidebar.init();
+  NavbarTop.init('Pustaka Kesehatan');
+  ProfileDrawer.init();
+  BottomNav.init();
+  Router.init();
 
   const params = new URLSearchParams(window.location.search);
   const articleId = params.get("article");
@@ -74,11 +79,42 @@
     });
   });
 
-  document.getElementById("library-search-input").addEventListener(
-    "input",
-    Utils.debounce(function () {
-      searchTerm = this.value.trim();
-      renderGrid();
-    }, 200)
-  );
+function renderComments() {
+    var list = CommentsFeature.getComments(articleId);
+    var box = document.getElementById("comments-list");
+    if (!box) return;
+    if (list.length === 0) {
+      box.innerHTML = '<div class="empty-state"><p class="text-small text-muted">Belum ada diskusi.</p></div>';
+      return;
+    }
+    box.innerHTML = list.map(function(c) {
+      return '<div class="comment-item" style="display:flex;gap:var(--space-3);padding:var(--space-4) 0;border-bottom:1px solid var(--border);">' +
+        '<div class="sidebar-avatar" style="width:36px;height:36px;font-size:13px;flex-shrink:0;background:var(--primary-soft);color:var(--primary-dark);display:flex;align-items:center;justify-content:center;border-radius:50%;">' +
+        (c.userAvatar ? '<img src="' + c.userAvatar + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />' : Utils.initials(c.userName)) +
+        '</div>' +
+        '<div style="flex:1;min-width:0;"><div style="display:flex;align-items:center;gap:var(--space-2);">' +
+        '<strong style="font-size:var(--fs-small);">' + Utils.escapeHtml(c.userName) + '</strong>' +
+        '<span class="text-xsmall text-muted">' + Utils.timeAgo(c.createdAt) + '</span></div>' +
+        '<p style="font-size:var(--fs-body);margin-top:var(--space-1);">' + CommentsFeature.formatContent(c.content) + '</p></div></div>';
+    }).join('');
+  }
+
+  if (articleId) {
+    renderComments();
+    var commentInput = document.getElementById("comment-input");
+    var commentSubmit = document.getElementById("comment-submit-btn");
+    if (commentSubmit) {
+      commentSubmit.addEventListener("click", function() {
+        var content = commentInput.value.trim();
+        if (!content) { Toast.error("Tuliskan komentarmu terlebih dahulu."); return; }
+        CommentsFeature.addComment(articleId, content);
+        commentInput.value = "";
+        renderComments();
+        Toast.success("Komentar berhasil dikirim.");
+      });
+    }
+    return;
+  }
+
+  renderGrid();
 })();

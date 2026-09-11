@@ -1,5 +1,10 @@
 (function () {
-  AppShell.init("facilities", "Detail Fasilitas");
+  if (!Auth.guard()) return;
+  Sidebar.init();
+  NavbarTop.init('Detail Fasilitas');
+  ProfileDrawer.init();
+  BottomNav.init();
+  Router.init();
 
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");

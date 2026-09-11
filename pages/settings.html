@@ -9,120 +9,80 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" />
 </head>
 <body class="app-body">
-<div class="app-layout" id="app-layout">
-  <div class="app-main-column" id="app-main-column">
-    <main class="app-page">
-      <h1>Pengaturan</h1>
-      <p class="mt-2 mb-6">Kelola profil, notifikasi, dan preferensi kesehatanmu dalam satu tempat.</p>
-
-      <div class="settings-grid">
-        <div class="section-stack">
-
-          <div class="card" id="section-profil">
-            <h3>Profil</h3>
-            <div class="settings-avatar-row mt-4">
-              <div class="drawer-avatar" id="settings-avatar"></div>
-              <div>
-                <strong id="settings-name-preview"></strong>
-                <p class="text-small text-muted" id="settings-email-preview"></p>
-              </div>
-            </div>
-            <form id="profile-form">
-              <div class="form-group">
-                <label class="form-label">Nama</label>
-                <input class="form-control" type="text" id="settings-name" />
-              </div>
-              <div class="form-group">
-                <label class="form-label">Email</label>
-                <input class="form-control" type="email" id="settings-email" />
-              </div>
-              <div class="form-group">
-                <label class="form-label">Nomor Telepon</label>
-                <input class="form-control" type="tel" id="settings-phone" placeholder="Opsional" />
-              </div>
-              <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-            </form>
-          </div>
-
-          <div class="card" id="section-preferensi">
-            <h3>Preferensi Kesehatan</h3>
-            <form id="preference-form" class="mt-4">
-              <div class="form-group">
-                <label class="form-label">Target Air Minum (liter)</label>
-                <input class="form-control" type="number" step="0.1" id="pref-water" />
-              </div>
-              <div class="form-group">
-                <label class="form-label">Target Tidur (jam)</label>
-                <input class="form-control" type="number" id="pref-sleep" />
-              </div>
-              <div class="form-group">
-                <label class="form-label">Target Aktivitas (menit)</label>
-                <input class="form-control" type="number" id="pref-activity" />
-              </div>
-              <div class="form-group">
-                <label class="form-label">Waktu Pengingat</label>
-                <input class="form-control" type="time" id="pref-reminder" />
-              </div>
-              <button type="submit" class="btn btn-primary">Simpan Preferensi</button>
-            </form>
-          </div>
-
-          <div class="card" id="section-tampilan">
-            <h3>Tampilan</h3>
-            <div class="select-pill-group mt-4">
-              <button class="select-pill" data-appearance="terang">Tampilan Terang</button>
-              <button class="select-pill" data-appearance="sistem">Ikuti Sistem</button>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="section-stack">
-
-          <div class="card" id="section-notifikasi">
-            <h3>Notifikasi</h3>
-            <div class="mt-4">
-              <div class="setting-row"><div class="setting-row-text"><strong>Pengingat Kesehatan Harian</strong><span class="text-small text-muted">Ringkasan kondisi setiap hari</span></div><label class="toggle-switch"><input type="checkbox" data-notif="notifDaily" /><span class="toggle-switch-track"></span></label></div>
-              <div class="setting-row"><div class="setting-row-text"><strong>Pengingat Jurnal</strong><span class="text-small text-muted">Ajakan mengisi jurnal harian</span></div><label class="toggle-switch"><input type="checkbox" data-notif="notifJournal" /><span class="toggle-switch-track"></span></label></div>
-              <div class="setting-row"><div class="setting-row-text"><strong>Pengingat Minum</strong><span class="text-small text-muted">Pengingat target hidrasi</span></div><label class="toggle-switch"><input type="checkbox" data-notif="notifWater" /><span class="toggle-switch-track"></span></label></div>
-              <div class="setting-row"><div class="setting-row-text"><strong>Rekomendasi Artikel</strong><span class="text-small text-muted">Artikel baru dari Pustaka</span></div><label class="toggle-switch"><input type="checkbox" data-notif="notifArticle" /><span class="toggle-switch-track"></span></label></div>
-              <div class="setting-row"><div class="setting-row-text"><strong>Notifikasi Fasilitas</strong><span class="text-small text-muted">Info fasilitas kesehatan terdekat</span></div><label class="toggle-switch"><input type="checkbox" data-notif="notifFacility" /><span class="toggle-switch-track"></span></label></div>
-            </div>
-          </div>
-
-          <div class="card" id="section-privasi">
-            <h3>Privasi dan Keamanan</h3>
-            <div class="mt-4">
-              <div class="setting-row"><div class="setting-row-text"><strong>Data Lokal</strong><span class="text-small text-muted">Seluruh data tersimpan di perangkatmu</span></div></div>
-              <div class="setting-row"><div class="setting-row-text"><strong>Riwayat Pemeriksaan</strong><span class="text-small text-muted" id="privasi-check-count"><span class="empty-state-text">Memuat...</span></span></div></div>
-              <div class="setting-row"><div class="setting-row-text"><strong>Riwayat Jurnal</strong><span class="text-small text-muted" id="privasi-journal-count"><span class="empty-state-text">Memuat...</span></span></div></div>
-            </div>
-            <button class="btn btn-danger btn-block mt-4" id="delete-all-data-btn"><i class="fa-solid fa-trash"></i> Hapus Semua Data Lokal</button>
-          </div>
-
-          <div class="card" id="section-bantuan">
-            <h3>Bantuan</h3>
-            <div class="mt-4" id="faq-list">
-              <div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-circle-question"></i></div><p class="text-small text-muted">FAQ akan muncul di sini</p></div>
-            </div>
-          </div>
-
-          <button class="btn btn-danger btn-block" id="settings-logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Keluar</button>
-
-        </div>
-      </div>
-    </main>
-  </div>
+<aside class="sidebar desktop-only" id="app-sidebar">
+<div class="sidebar-brand"><div class="sidebar-brand-mark">S</div><span class="sidebar-brand-text">SEHATIN</span></div>
+<nav class="sidebar-nav">
+<a class="sidebar-nav-item" href="dashboard.html" data-nav-key="dashboard"><i class="fa-solid fa-house"></i><span class="sidebar-nav-label">Dashboard</span></a>
+<a class="sidebar-nav-item" href="health-check.html" data-nav-key="health-check"><i class="fa-solid fa-clipboard-check"></i><span class="sidebar-nav-label">Pemeriksaan</span></a>
+<a class="sidebar-nav-item" href="health.html" data-nav-key="health"><i class="fa-solid fa-heart-pulse"></i><span class="sidebar-nav-label">Kesehatan Saya</span></a>
+<a class="sidebar-nav-item" href="journal.html" data-nav-key="journal"><i class="fa-solid fa-book-medical"></i><span class="sidebar-nav-label">Jurnal</span></a>
+<a class="sidebar-nav-item" href="facilities.html" data-nav-key="facilities"><i class="fa-solid fa-hospital"></i><span class="sidebar-nav-label">Fasilitas</span></a>
+<a class="sidebar-nav-item" href="library.html" data-nav-key="library"><i class="fa-solid fa-book-open"></i><span class="sidebar-nav-label">Pustaka</span></a>
+<a class="sidebar-nav-item" href="settings.html" data-nav-key="settings"><i class="fa-solid fa-gear"></i><span class="sidebar-nav-label">Pengaturan</span></a>
+</nav>
+<div class="sidebar-footer">
+<div class="sidebar-user" id="sidebar-user-trigger"><div class="sidebar-avatar" id="sidebar-avatar-initials">U</div><div class="sidebar-user-info"><strong id="sidebar-user-name">Pengguna</strong><span id="sidebar-user-email"></span></div></div>
+<a class="sidebar-nav-item sidebar-logout" id="sidebar-logout-btn" href="#"><i class="fa-solid fa-right-from-bracket"></i><span class="sidebar-nav-label">Keluar</span></a>
 </div>
-
-<script src="../js/core/storage.js"></script>
-<script src="../js/core/utils.js"></script>
-<script src="../js/core/auth.js"></script>
-<script src="../js/core/state.js"></script>
-<script src="../js/components/toast.js"></script>
-<script src="../js/components/modal.js"></script>
-<script src="../js/features/search.js"></script>
-<script src="../js/components/navbar.js"></script>
-<script src="../js/pages/settings.js"></script>
+</aside>
+<header class="topbar desktop-only" id="topbar"><span class="topbar-title">Pengaturan</span><div class="topbar-actions"><div class="topbar-search" id="topbar-search-wrap" style="position:relative;"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="topbar-search-input" placeholder="Cari fasilitas, artikel..." autocomplete="off" /><div class="search-results-panel" id="topbar-search-results"></div></div><button class="btn-icon" id="topbar-notif-btn" aria-label="Notifikasi" style="position:relative;"><i class="fa-solid fa-bell"></i></button><button class="topbar-avatar-btn" id="topbar-avatar-btn" aria-label="Buka profil"><div class="sidebar-avatar" id="topbar-avatar-initials">U</div></button></div></header>
+<header class="mobile-header hide-desktop" id="mobile-header"><span class="mobile-header-title">Pengaturan</span><div class="mobile-header-actions"><button class="btn-icon" id="mobile-notif-btn" aria-label="Notifikasi" style="position:relative;"><i class="fa-solid fa-bell"></i></button><button class="topbar-avatar-btn" id="mobile-avatar-btn" aria-label="Buka profil"><div class="sidebar-avatar" id="mobile-avatar-initials">U</div></button></div></header>
+<div class="drawer-overlay" id="profile-drawer-overlay"></div>
+<aside class="drawer-panel" id="profile-drawer-panel"><div class="drawer-header"><strong>Profil Saya</strong><button class="btn-icon" id="drawer-close-btn" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button></div><div class="drawer-body"><div class="drawer-profile"><div class="drawer-avatar" id="drawer-avatar-initials">U</div><strong id="drawer-user-name">Pengguna</strong><span class="text-muted text-small" id="drawer-user-email"></span></div><div class="drawer-menu"><a class="drawer-menu-item" href="settings.html"><i class="fa-solid fa-user"></i><span>Profil</span><i class="fa-solid fa-chevron-right"></i></a><a class="drawer-menu-item" href="settings.html"><i class="fa-solid fa-gear"></i><span>Pengaturan</span><i class="fa-solid fa-chevron-right"></i></a><a class="drawer-menu-item" href="settings.html"><i class="fa-solid fa-heart-pulse"></i><span>Preferensi Kesehatan</span><i class="fa-solid fa-chevron-right"></i></a><a class="drawer-menu-item" href="settings.html"><i class="fa-solid fa-circle-question"></i><span>Bantuan</span><i class="fa-solid fa-chevron-right"></i></a></div></div><div class="drawer-footer"><button class="btn btn-danger btn-block" id="drawer-logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Keluar</button></div></aside>
+<nav class="bottom-nav hide-desktop" id="app-bottom-nav"><a class="bottom-nav-item" href="dashboard.html"><i class="fa-solid fa-house"></i><span>Beranda</span></a><a class="bottom-nav-item" href="health-check.html"><i class="fa-solid fa-clipboard-check"></i><span>Periksa</span></a><a class="bottom-nav-item" href="health.html"><i class="fa-solid fa-heart-pulse"></i><span>Kesehatan</span></a><a class="bottom-nav-item" href="journal.html"><i class="fa-solid fa-book-medical"></i><span>Jurnal</span></a><a class="bottom-nav-item" href="facilities.html"><i class="fa-solid fa-hospital"></i><span>Fasilitas</span></a><button class="bottom-nav-item" id="bottom-nav-profile"><i class="fa-solid fa-user"></i><span>Profil</span></button></nav>
+<div class="app-layout" id="app-layout">
+<div class="app-main-column" id="app-main-column">
+<h1>Pengaturan</h1>
+<p class="mt-2 mb-6">Kelola profil, notifikasi, dan preferensi kesehatanmu dalam satu tempat.</p>
+<div class="settings-grid">
+<div class="section-stack">
+<div class="card" id="section-profil">
+<h3>Profil</h3>
+<div class="settings-avatar-row mt-4"><div class="drawer-avatar" id="settings-avatar"></div><div><strong id="settings-name-preview"></strong><p class="text-small text-muted" id="settings-email-preview"></p></div></div>
+<form id="profile-form">
+<div class="form-group"><label class="form-label">Nama</label><input class="form-control" type="text" id="settings-name" /></div>
+<div class="form-group"><label class="form-label">Email</label><input class="form-control" type="email" id="settings-email" /></div>
+<div class="form-group"><label class="form-label">Nomor Telepon</label><input class="form-control" type="tel" id="settings-phone" placeholder="Opsional" /></div>
+<button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+</form>
+</div>
+<div class="card" id="section-tampilan">
+<h3>Tampilan</h3>
+<div class="select-pill-group mt-4">
+<button class="select-pill" data-appearance="terang">Tampilan Terang</button>
+<button class="select-pill" data-appearance="sistem">Ikuti Sistem</button>
+</div>
+</div>
+</div>
+<div class="section-stack">
+<div class="card" id="section-notifikasi">
+<h3>Notifikasi</h3>
+<div class="mt-4">
+<div class="setting-row"><div class="setting-row-text"><strong>Pengingat Kesehatan Harian</strong><span class="text-small text-muted">Ringkasan kondisi setiap hari</span></div><label class="toggle-switch"><input type="checkbox" data-notif="notifDaily" /><span class="toggle-switch-track"></span></label></div>
+<div class="setting-row"><div class="setting-row-text"><strong>Pengingat Jurnal</strong><span class="text-small text-muted">Ajakan mengisi jurnal harian</span></div><label class="toggle-switch"><input type="checkbox" data-notif="notifJournal" /><span class="toggle-switch-track"></span></label></div>
+<div class="setting-row"><div class="setting-row-text"><strong>Pengingat Minum</strong><span class="text-small text-muted">Pengingat target hidrasi</span></div><label class="toggle-switch"><input type="checkbox" data-notif="notifWater" /><span class="toggle-switch-track"></span></label></div>
+<div class="setting-row"><div class="setting-row-text"><strong>Rekomendasi Artikel</strong><span class="text-small text-muted">Artikel baru dari Pustaka</span></div><label class="toggle-switch"><input type="checkbox" data-notif="notifArticle" /><span class="toggle-switch-track"></span></label></div>
+<div class="setting-row"><div class="setting-row-text"><strong>Notifikasi Fasilitas</strong><span class="text-small text-muted">Info fasilitas kesehatan terdekat</span></div><label class="toggle-switch"><input type="checkbox" data-notif="notifFacility" /><span class="toggle-switch-track"></span></label></div>
+</div>
+</div>
+<div class="card" id="section-privasi">
+<h3>Privasi dan Keamanan</h3>
+<div class="mt-4">
+<div class="setting-row"><div class="setting-row-text"><strong>Data Lokal</strong><span class="text-small text-muted">Seluruh data tersimpan di perangkatmu</span></div></div>
+<div class="setting-row"><div class="setting-row-text"><strong>Riwayat Pemeriksaan</strong><span class="text-small text-muted" id="privasi-check-count"><span class="empty-state-text">Memuat...</span></span></div></div>
+<div class="setting-row"><div class="setting-row-text"><strong>Riwayat Jurnal</strong><span class="text-small text-muted" id="privasi-journal-count"><span class="empty-state-text">Memuat...</span></span></div></div>
+</div>
+<button class="btn btn-danger btn-block mt-4" id="delete-all-data-btn"><i class="fa-solid fa-trash"></i> Hapus Semua Data Lokal</button>
+</div>
+<div class="card" id="section-bantuan">
+<h3>Bantuan</h3>
+<div class="mt-4" id="faq-list"><div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-circle-question"></i></div><p class="text-small text-muted">FAQ akan muncul di sini</p></div></div>
+</div>
+<button class="btn btn-danger btn-block" id="settings-logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Keluar</button>
+</div>
+</div>
+</div>
+</div>
+<script src="../js/core/storage.js"></script><script src="../js/core/utils.js"></script><script src="../js/core/auth.js"></script><script src="../js/core/state.js"></script><script src="../js/core/mock-data.js"></script><script src="../js/core/router.js"></script><script src="../js/core/user.js"></script><script src="../js/components/toast.js"></script><script src="../js/components/modal.js"></script><script src="../js/features/search.js"></script><script src="../js/components/sidebar.js"></script><script src="../js/components/navbar-top.js"></script><script src="../js/components/profile-drawer.js"></script><script src="../js/components/bottom-nav.js"></script><script src="../js/pages/settings.js"></script>
 </body>
 </html>

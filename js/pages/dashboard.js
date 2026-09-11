@@ -1,5 +1,10 @@
 (function () {
-  AppShell.init("dashboard", "Dashboard");
+  if (!Auth.guard()) return;
+  Sidebar.init();
+  NavbarTop.init('Dashboard');
+  ProfileDrawer.init();
+  BottomNav.init();
+  Router.init();
 
   const user = Auth.currentUser() || { name: "Pengguna" };
   document.getElementById("greeting-text").textContent = Utils.greetingByHour() + ", " + user.name.split(" ")[0] + ".";

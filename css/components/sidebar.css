@@ -85,35 +85,39 @@
 }
 
 .sidebar-nav-item:hover {
-   background: var(--primary-soft);
-   color: var(--navy);
+  background: var(--bg-soft);
+  color: var(--navy);
 }
 
 .sidebar-nav-item:hover i {
-   color: var(--primary-dark);
-   transform: translateX(2px);
+  color: var(--primary-dark);
+  transform: translateX(2px);
 }
 
 .sidebar-nav-item.is-active {
-   background: var(--primary-soft);
-   color: var(--primary-dark);
-   font-weight: var(--fw-bold);
+  background: var(--bg-soft);
+  color: var(--primary-dark);
+  font-weight: var(--fw-bold);
 }
 
 .sidebar-nav-item.is-active i {
-   color: var(--primary-dark);
+  color: var(--primary-dark);
+}
+
+.sidebar-nav-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: var(--green);
+  border-radius: 0 2px 2px 0;
 }
 
 .sidebar-nav-item.is-active::before {
-   content: "";
-   position: absolute;
-   left: 0;
-   top: 50%;
-   transform: translateY(-50%);
-   width: 3px;
-   height: 60%;
-   background: var(--primary-dark);
-   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--green);
 }
 
 .sidebar.is-collapsed .sidebar-nav-item {

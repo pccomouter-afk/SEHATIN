@@ -9,170 +9,88 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" />
 </head>
 <body class="app-body">
-<div class="app-layout" id="app-layout">
-  <div class="app-main-column" id="app-main-column">
-    <main class="app-page">
-      <h1>Kesehatan Saya</h1>
-      <p class="mt-2 mb-6">Pantau tidur, hidrasi, aktivitas, dan kondisi emosimu dalam satu tempat.</p>
-
-      <div class="health-tabs" id="health-tabs">
-        <button class="health-tab-btn is-active" data-tab="tidur">Tidur</button>
-        <button class="health-tab-btn" data-tab="hidrasi">Hidrasi</button>
-        <button class="health-tab-btn" data-tab="aktivitas">Aktivitas</button>
-        <button class="health-tab-btn" data-tab="wellness">Ruang Tenang</button>
-      </div>
-
-      <section id="tab-tidur" class="section-stack">
-        <div class="grid grid-2">
-          <div class="card">
-            <h3>Rutinitas Tidur</h3>
-            <div id="sleep-data" class="mt-4">
-              <div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-moon"></i></div><p>Belum ada data tidur tercatat.</p></div>
-            </div>
-          </div>
-          <div class="card">
-            <h3>Target Tidur Malam Ini</h3>
-            <p class="mt-2">Coba tidur sebelum pukul <strong>22.00</strong> agar mendapat 8 jam istirahat.</p>
-            <div class="mt-4">
-              <strong class="text-small">Tips Tidur</strong>
-              <div class="hc-list-item mt-2"><i class="fa-solid fa-circle-check" style="color:var(--primary);"></i><span>Hindari layar gawai satu jam sebelum tidur.</span></div>
-              <div class="hc-list-item mt-2"><i class="fa-solid fa-circle-check" style="color:var(--primary);"></i><span>Jaga suhu kamar tetap sejuk dan nyaman.</span></div>
-              <div class="hc-list-item mt-2"><i class="fa-solid fa-circle-check" style="color:var(--primary);"></i><span>Tidur dan bangun di jam yang konsisten.</span></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="tab-hidrasi" class="section-stack" style="display:none;">
-        <div class="card">
-          <h3>Pelacak Hidrasi</h3>
-          <div class="hydration-visual mt-4">
-            <div class="hydration-bottle"><div class="hydration-bottle-fill" id="hydration-fill"></div></div>
-            <div class="flex-col gap-2" style="flex:1;min-width:180px;">
-              <span class="metric-value" id="hydration-text">Belum tersedia</span>
-              <div class="metric-progress mt-2"><div class="metric-progress-fill" id="hydration-progress-fill" style="background:var(--blue);width:0%;"></div></div>
-              <div class="flex gap-2 mt-4">
-                <button class="btn btn-secondary" id="add-250">+250 ml</button>
-                <button class="btn btn-primary" id="add-500">+500 ml</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="tab-aktivitas" class="section-stack" style="display:none;">
-        <div class="card">
-          <div class="card-title-row">
-            <h3>Aktivitas Tercatat</h3>
-            <button class="btn btn-primary btn-sm" id="add-activity-btn"><i class="fa-solid fa-plus"></i> Aktivitas</button>
-          </div>
-          <div id="activity-log">
-            <div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-person-walking"></i></div><p class="text-small text-muted">Aktivitas tercatat akan muncul di sini</p></div>
-          </div>
-        </div>
-
-        <div class="card" id="activity-form-card" style="display:none;">
-          <h3>Tambah Aktivitas</h3>
-          <form id="activity-form" class="mt-4">
-            <div class="form-group">
-              <label class="form-label">Nama Aktivitas</label>
-              <select class="form-control" id="activity-type">
-                <option>Berjalan</option>
-                <option>Lari</option>
-                <option>Bersepeda</option>
-                <option>Stretching</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Durasi (menit)</label>
-              <input class="form-control" type="number" id="activity-duration" min="1" placeholder="Contoh: 20" />
-              <span class="form-error" data-error-for="activity-duration"><i class="fa-solid fa-circle-exclamation"></i> Masukkan durasi yang valid.</span>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Intensitas</label>
-              <div class="select-pill-group" id="activity-intensity-group">
-                <button type="button" class="select-pill is-selected" data-intensity="Ringan">Ringan</button>
-                <button type="button" class="select-pill" data-intensity="Sedang">Sedang</button>
-                <button type="button" class="select-pill" data-intensity="Berat">Berat</button>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Simpan Aktivitas</button>
-          </form>
-        </div>
-      </section>
-
-      <section id="tab-wellness" class="section-stack" style="display:none;">
-        <div class="card" id="wellness-intro">
-          <h3>Ruang Tenang</h3>
-          <p class="mt-2">Bukan diagnosis, hanya ruang untuk membantumu menjeda sejenak.</p>
-          <div class="grid grid-2 mt-6">
-            <div class="card card-flat">
-              <h3>Latihan Pernapasan</h3>
-              <p class="mt-2 text-small">Tarik napas, tahan, dan buang napas perlahan.</p>
-              <div class="mini-timer-options mt-4">
-                <button class="btn btn-secondary btn-sm" data-breathe-min="1">1 menit</button>
-                <button class="btn btn-secondary btn-sm" data-breathe-min="3">3 menit</button>
-                <button class="btn btn-secondary btn-sm" data-breathe-min="5">5 menit</button>
-              </div>
-            </div>
-            <div class="card card-flat">
-              <h3>Jeda 5 Menit</h3>
-              <p class="mt-2 text-small">Mindfulness singkat untuk menenangkan pikiran.</p>
-              <button class="btn btn-primary btn-sm mt-4" id="start-mindfulness">Mulai Jeda 5 Menit</button>
-            </div>
-          </div>
-          <div class="card card-flat mt-6">
-            <h3>Cek Kondisi Emosiku</h3>
-            <p class="mt-2 text-small">Jawab 6 pertanyaan singkat untuk mendapatkan gambaran wellness.</p>
-            <button class="btn btn-accent mt-4" id="start-wellness-btn">Mulai Cek Kondisi</button>
-          </div>
-        </div>
-
-        <div class="card" id="breathing-view" style="display:none;">
-          <div class="breathing-circle-wrap">
-            <div class="breathing-circle" id="breathing-circle">Tarik Napas</div>
-            <span id="breathing-timer" class="metric-value">01:00</span>
-            <button class="btn btn-secondary" id="stop-breathing">Selesai</button>
-          </div>
-        </div>
-
-        <div class="card" id="wellness-question-view" style="display:none;">
-          <div class="hc-progress-wrap">
-            <div class="hc-progress-label"><span id="w-progress-text">Pertanyaan 1 dari 6</span></div>
-            <div class="hc-progress-bar"><div class="hc-progress-fill" id="w-progress-fill"></div></div>
-          </div>
-          <h3 id="w-question-text"></h3>
-          <div id="w-options" class="mt-4"></div>
-          <div class="hc-nav-row" style="max-width:100%;margin:24px 0 0;">
-            <button class="btn btn-secondary" id="w-prev-btn">Sebelumnya</button>
-            <button class="btn btn-primary" id="w-next-btn">Selanjutnya</button>
-          </div>
-        </div>
-
-        <div class="card" id="wellness-result-view" style="display:none;">
-          <div class="icon-chip" style="width:56px;height:56px;font-size:22px;margin-bottom:16px;"><i class="fa-solid fa-heart"></i></div>
-          <h3 id="w-result-title"></h3>
-          <div id="w-result-points" class="mt-4"></div>
-          <button class="btn btn-secondary mt-6" id="wellness-back-btn">Kembali</button>
-        </div>
-      </section>
-
-    </main>
-  </div>
+<aside class="sidebar desktop-only" id="app-sidebar">
+<div class="sidebar-brand"><div class="sidebar-brand-mark">S</div><span class="sidebar-brand-text">SEHATIN</span></div>
+<nav class="sidebar-nav">
+<a class="sidebar-nav-item" href="dashboard.html" data-nav-key="dashboard"><i class="fa-solid fa-house"></i><span class="sidebar-nav-label">Dashboard</span></a>
+<a class="sidebar-nav-item" href="health-check.html" data-nav-key="health-check"><i class="fa-solid fa-clipboard-check"></i><span class="sidebar-nav-label">Pemeriksaan</span></a>
+<a class="sidebar-nav-item" href="health.html" data-nav-key="health"><i class="fa-solid fa-heart-pulse"></i><span class="sidebar-nav-label">Kesehatan Saya</span></a>
+<a class="sidebar-nav-item" href="journal.html" data-nav-key="journal"><i class="fa-solid fa-book-medical"></i><span class="sidebar-nav-label">Jurnal</span></a>
+<a class="sidebar-nav-item" href="facilities.html" data-nav-key="facilities"><i class="fa-solid fa-hospital"></i><span class="sidebar-nav-label">Fasilitas</span></a>
+<a class="sidebar-nav-item" href="library.html" data-nav-key="library"><i class="fa-solid fa-book-open"></i><span class="sidebar-nav-label">Pustaka</span></a>
+<a class="sidebar-nav-item" href="settings.html" data-nav-key="settings"><i class="fa-solid fa-gear"></i><span class="sidebar-nav-label">Pengaturan</span></a>
+</nav>
+<div class="sidebar-footer">
+<div class="sidebar-user" id="sidebar-user-trigger"><div class="sidebar-avatar" id="sidebar-avatar-initials">U</div><div class="sidebar-user-info"><strong id="sidebar-user-name">Pengguna</strong><span id="sidebar-user-email"></span></div></div>
+<a class="sidebar-nav-item sidebar-logout" id="sidebar-logout-btn" href="#"><i class="fa-solid fa-right-from-bracket"></i><span class="sidebar-nav-label">Keluar</span></a>
 </div>
-
-<script src="../js/core/storage.js"></script>
-<script src="../js/core/utils.js"></script>
-<script src="../js/core/auth.js"></script>
-<script src="../js/core/state.js"></script>
-<script src="../js/core/mock-data.js"></script>
-<script src="../js/components/toast.js"></script>
-<script src="../js/components/modal.js"></script>
-<script src="../js/features/search.js"></script>
-<script src="../js/features/hydration.js"></script>
-<script src="../js/features/activity.js"></script>
-<script src="../js/features/wellness.js"></script>
-<script src="../js/components/navbar.js"></script>
-<script src="../js/pages/health.js"></script>
+</aside>
+<header class="topbar desktop-only" id="topbar"><span class="topbar-title">Kesehatan Saya</span><div class="topbar-actions"><div class="topbar-search" id="topbar-search-wrap" style="position:relative;"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="topbar-search-input" placeholder="Cari fasilitas, artikel..." autocomplete="off" /><div class="search-results-panel" id="topbar-search-results"></div></div><button class="btn-icon" id="topbar-notif-btn" aria-label="Notifikasi" style="position:relative;"><i class="fa-solid fa-bell"></i></button><button class="topbar-avatar-btn" id="topbar-avatar-btn" aria-label="Buka profil"><div class="sidebar-avatar" id="topbar-avatar-initials">U</div></button></div></header>
+<header class="mobile-header hide-desktop" id="mobile-header"><span class="mobile-header-title">Kesehatan Saya</span><div class="mobile-header-actions"><button class="btn-icon" id="mobile-notif-btn" aria-label="Notifikasi" style="position:relative;"><i class="fa-solid fa-bell"></i></button><button class="topbar-avatar-btn" id="mobile-avatar-btn" aria-label="Buka profil"><div class="sidebar-avatar" id="mobile-avatar-initials">U</div></button></div></header>
+<div class="drawer-overlay" id="profile-drawer-overlay"></div>
+<aside class="drawer-panel" id="profile-drawer-panel"><div class="drawer-header"><strong>Profil Saya</strong><button class="btn-icon" id="drawer-close-btn" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button></div><div class="drawer-body"><div class="drawer-profile"><div class="drawer-avatar" id="drawer-avatar-initials">U</div><strong id="drawer-user-name">Pengguna</strong><span class="text-muted text-small" id="drawer-user-email"></span></div><div class="drawer-menu"><a class="drawer-menu-item" href="settings.html"><i class="fa-solid fa-user"></i><span>Profil</span><i class="fa-solid fa-chevron-right"></i></a><a class="drawer-menu-item" href="settings.html"><i class="fa-solid fa-gear"></i><span>Pengaturan</span><i class="fa-solid fa-chevron-right"></i></a><a class="drawer-menu-item" href="settings.html"><i class="fa-solid fa-heart-pulse"></i><span>Preferensi Kesehatan</span><i class="fa-solid fa-chevron-right"></i></a><a class="drawer-menu-item" href="settings.html"><i class="fa-solid fa-circle-question"></i><span>Bantuan</span><i class="fa-solid fa-chevron-right"></i></a></div></div><div class="drawer-footer"><button class="btn btn-danger btn-block" id="drawer-logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Keluar</button></div></aside>
+<nav class="bottom-nav hide-desktop" id="app-bottom-nav"><a class="bottom-nav-item" href="dashboard.html"><i class="fa-solid fa-house"></i><span>Beranda</span></a><a class="bottom-nav-item" href="health-check.html"><i class="fa-solid fa-clipboard-check"></i><span>Periksa</span></a><a class="bottom-nav-item" href="health.html"><i class="fa-solid fa-heart-pulse"></i><span>Kesehatan</span></a><a class="bottom-nav-item" href="journal.html"><i class="fa-solid fa-book-medical"></i><span>Jurnal</span></a><a class="bottom-nav-item" href="facilities.html"><i class="fa-solid fa-hospital"></i><span>Fasilitas</span></a><button class="bottom-nav-item" id="bottom-nav-profile"><i class="fa-solid fa-user"></i><span>Profil</span></button></nav>
+<div class="app-layout" id="app-layout">
+<div class="app-main-column" id="app-main-column">
+<h1>Kesehatan Saya</h1>
+<p class="mt-2 mb-6">Pantau tidur, hidrasi, aktivitas, dan kondisi emosimu dalam satu tempat.</p>
+<div class="health-tabs" id="health-tabs">
+<button class="health-tab-btn is-active" data-tab="tidur">Tidur</button>
+<button class="health-tab-btn" data-tab="hidrasi">Hidrasi</button>
+<button class="health-tab-btn" data-tab="aktivitas">Aktivitas</button>
+<button class="health-tab-btn" data-tab="mood">Mood</button>
+<button class="health-tab-btn" data-tab="stres">Stres</button>
+<button class="health-tab-btn" data-tab="health-check">Health Check</button>
+<button class="health-tab-btn" data-tab="trend">Trend</button>
+<button class="health-tab-btn" data-tab="wellness">Ruang Tenang</button>
+</div>
+<section id="tab-ringkasan" class="section-stack">
+<div class="grid grid-2">
+<div class="card"><h3>Ringkasan Kesehatan</h3><div id="health-summary" class="mt-4"><div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-chart-pie"></i></div><p class="text-small text-muted">Data kesehatanmu akan muncul di sini</p></div></div></div>
+</div>
+</section>
+<section id="tab-tidur" class="section-stack" style="display:none;">
+<div class="grid grid-2">
+<div class="card"><h3>Rutinitas Tidur</h3><div id="sleep-data" class="mt-4"><div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-moon"></i></div><p>Belum ada data tidur tercatat.</p></div></div></div>
+<div class="card"><h3>Target Tidur Malam Ini</h3><p class="mt-2">Coba tidur sebelum pukul <strong>22.00</strong> agar mendapat 8 jam istirahat.</p><div class="mt-4"><strong class="text-small">Tips Tidur</strong><div class="hc-list-item mt-2"><i class="fa-solid fa-circle-check" style="color:var(--primary);"></i><span>Hindari layar gawai satu jam sebelum tidur.</span></div><div class="hc-list-item mt-2"><i class="fa-solid fa-circle-check" style="color:var(--primary);"></i><span>Jaga suhu kamar tetap sejuk dan nyaman.</span></div><div class="hc-list-item mt-2"><i class="fa-solid fa-circle-check" style="color:var(--primary);"></i><span>Tidur dan bangun di jam yang konsisten.</span></div></div></div>
+</div>
+</section>
+<section id="tab-hidrasi" class="section-stack" style="display:none;">
+<div class="card"><h3>Pelacak Hidrasi</h3><div class="hydration-visual mt-4"><div class="hydration-bottle"><div class="hydration-bottle-fill" id="hydration-fill"></div></div><div class="flex-col gap-2" style="flex:1;min-width:180px;"><span class="metric-value" id="hydration-text">Belum tersedia</span><div class="metric-progress mt-2"><div class="metric-progress-fill" id="hydration-progress-fill" style="background:var(--blue);width:0%;"></div></div><div class="flex gap-2 mt-4"><button class="btn btn-secondary" id="add-250">+250 ml</button><button class="btn btn-primary" id="add-500">+500 ml</button></div></div></div></div>
+</section>
+<section id="tab-aktivitas" class="section-stack" style="display:none;">
+<div class="card"><div class="card-title-row"><h3>Aktivitas Tercatat</h3><button class="btn btn-primary btn-sm" id="add-activity-btn"><i class="fa-solid fa-plus"></i> Aktivitas</button></div><div id="activity-log"><div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-person-walking"></i></div><p class="text-small text-muted">Aktivitas tercatat akan muncul di sini</p></div></div></div>
+<div class="card" id="activity-form-card" style="display:none;"><h3>Tambah Aktivitas</h3><form id="activity-form" class="mt-4"><div class="form-group"><label class="form-label">Nama Aktivitas</label><select class="form-control" id="activity-type"><option>Berjalan</option><option>Lari</option><option>Bersepeda</option><option>Stretching</option></select></div><div class="form-group"><label class="form-label">Durasi (menit)</label><input class="form-control" type="number" id="activity-duration" min="1" placeholder="Contoh: 20" /><span class="form-error" data-error-for="activity-duration"><i class="fa-solid fa-circle-exclamation"></i> Masukkan durasi yang valid.</span></div><div class="form-group"><label class="form-label">Intensitas</label><div class="select-pill-group" id="activity-intensity-group"><button type="button" class="select-pill is-selected" data-intensity="Ringan">Ringan</button><button type="button" class="select-pill" data-intensity="Sedang">Sedang</button><button type="button" class="select-pill" data-intensity="Berat">Berat</button></div></div><button type="submit" class="btn btn-primary btn-block">Simpan Aktivitas</button></form></div>
+</section>
+<section id="tab-mood" class="section-stack" style="display:none;">
+<div class="card"><h3>Catatan Mood</h3><p class="mt-2">Pilih suasana hati mu untuk hari ini.</p><div id="mood-chart" class="mt-4"><div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-face-smile"></i></div><p class="text-small text-muted">Mood akan ditampilkan di sini</p></div></div></div>
+</section>
+<section id="tab-stres" class="section-stack" style="display:none;">
+<div class="card"><h3>Level Stres</h3><p class="mt-2">Pantau level stresmu secara rutin.</p><div id="stress-data" class="mt-4"><div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-brain"></i></div><p class="text-small text-muted">Data stres akan muncul di sini</p></div></div></div>
+</section>
+<section id="tab-health-check" class="section-stack" style="display:none;">
+<div class="card"><h3>Health Check</h3><p class="mt-2">Cek kondisi kesehatanmu secara menyeluruh.</p><div id="health-check-data" class="mt-4"><div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-clipboard-check"></i></div><p class="text-small text-muted">Lakukan pemeriksaan terlebih dahulu di halaman Pemeriksaan Kondisi</p></div></div><div class="mt-4"><a href="health-check.html" class="btn btn-primary"><i class="fa-solid fa-clipboard-check"></i> Mulai Pemeriksaan</a></div></div>
+</section>
+<section id="tab-trend" class="section-stack" style="display:none;">
+<div class="card"><h3>Tren Kesehatan</h3><div id="trend-data" class="mt-4"><div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-chart-line"></i></div><p class="text-small text-muted">Tren kesehatan akan ditampilkan di sini</p></div></div></div>
+</section>
+<section id="tab-wellness" class="section-stack" style="display:none;">
+<div class="card" id="wellness-intro">
+<h3>Ruang Tenang</h3>
+<p class="mt-2">Bukan diagnosis, hanya ruang untuk membantumu menjeda sejenak.</p>
+<div class="grid grid-2 mt-6">
+<div class="card card-flat"><h3>Latihan Pernapasan</h3><p class="mt-2 text-small">Tarik napas, tahan, dan buang napas perlahan.</p><div class="mini-timer-options mt-4"><button class="btn btn-secondary btn-sm" data-breathe-min="1">1 menit</button><button class="btn btn-secondary btn-sm" data-breathe-min="3">3 menit</button><button class="btn btn-secondary btn-sm" data-breathe-min="5">5 menit</button></div></div>
+<div class="card card-flat"><h3>Jeda 5 Menit</h3><p class="mt-2 text-small">Mindfulness singkat untuk menenangkan pikiran.</p><button class="btn btn-primary btn-sm mt-4" id="start-mindfulness">Mulai Jeda 5 Menit</button></div>
+</div>
+<div class="card card-flat mt-6"><h3>Cek Kondisi Emosiku</h3><p class="mt-2 text-small">Jawab 6 pertanyaan singkat untuk mendapatkan gambaran wellness.</p><button class="btn btn-accent mt-4" id="start-wellness-btn">Mulai Cek Kondisi</button></div>
+</div>
+<div class="card" id="breathing-view" style="display:none;"><div class="breathing-circle-wrap"><div class="breathing-circle" id="breathing-circle">Tarik Napas</div><span id="breathing-timer" class="metric-value">01:00</span><button class="btn btn-secondary" id="stop-breathing">Selesai</button></div></div>
+<div class="card" id="wellness-question-view" style="display:none;"><div class="hc-progress-wrap"><div class="hc-progress-label"><span id="w-progress-text">Pertanyaan 1 dari 6</span></div><div class="hc-progress-bar"><div class="hc-progress-fill" id="w-progress-fill"></div></div></div><h3 id="w-question-text"></h3><div id="w-options" class="mt-4"></div><div class="hc-nav-row" style="max-width:100%;margin:24px 0 0;"><button class="btn btn-secondary" id="w-prev-btn">Sebelumnya</button><button class="btn btn-primary" id="w-next-btn">Selanjutnya</button></div></div>
+<div class="card" id="wellness-result-view" style="display:none;"><div class="icon-chip" style="width:56px;height:56px;font-size:22px;margin-bottom:16px;"><i class="fa-solid fa-heart"></i></div><h3 id="w-result-title"></h3><div id="w-result-points" class="mt-4"></div><button class="btn btn-secondary mt-6" id="wellness-back-btn">Kembali</button></div>
+</section>
+<div class="mt-6"><a href="health-preferences.html" class="btn btn-secondary"><i class="fa-solid fa-gear"></i> Pengaturan Preferensi Kesehatan</a></div>
+</div>
+</div>
+<script src="../js/core/storage.js"></script><script src="../js/core/utils.js"></script><script src="../js/core/auth.js"></script><script src="../js/core/state.js"></script><script src="../js/core/mock-data.js"></script><script src="../js/core/router.js"></script><script src="../js/core/user.js"></script><script src="../js/components/toast.js"></script><script src="../js/components/modal.js"></script><script src="../js/features/search.js"></script><script src="../js/components/sidebar.js"></script><script src="../js/components/navbar-top.js"></script><script src="../js/components/profile-drawer.js"></script><script src="../js/components/bottom-nav.js"></script><script src="../js/pages/health.js"></script>
 </body>
 </html>

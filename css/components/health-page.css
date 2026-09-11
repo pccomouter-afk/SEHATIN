@@ -1,0 +1,133 @@
+.health-summary-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .health-summary-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.health-summary-card {
+  background: var(--bg);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-5);
+  text-align: center;
+}
+
+.health-summary-card .metric-value {
+  font-size: 26px;
+  font-weight: var(--fw-extrabold);
+  color: var(--navy);
+}
+
+.health-summary-card .metric-label {
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+  font-weight: var(--fw-medium);
+}
+
+.health-section {
+  margin-bottom: var(--space-6);
+}
+
+.health-section h3 {
+  font-size: var(--fs-h3-mobile);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.sleep-stat {
+  background: var(--bg);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-4);
+  text-align: center;
+}
+
+.sleep-stat .metric-value {
+  font-size: var(--fs-body-lg);
+  font-weight: var(--fw-extrabold);
+  color: var(--navy);
+}
+
+.sleep-stat .metric-label {
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+
+.hydration-visual {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.hydration-bottle {
+  width: 90px;
+  height: 160px;
+  border-radius: 20px;
+  border: 3px solid var(--soft-blue);
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-soft);
+  flex-shrink: 0;
+}
+
+.hydration-bottle-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--blue);
+  transition: height var(--transition-slow);
+}
+
+.activity-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.activity-item {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--bg);
+  border-radius: var(--radius-md);
+}
+
+.activity-item .metric-label {
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+
+.mood-trend {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-2);
+}
+
+.mood-trend-card {
+  background: var(--bg);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+
+.mood-trend-card span {
+  font-size: var(--fs-xsmall);
+  color: var(--text-muted);
+}
+
+.trend-chart {
+  width: 100%;
+  height: auto;
+  background: var(--bg);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-4);
+}

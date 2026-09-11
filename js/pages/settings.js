@@ -1,5 +1,10 @@
 (function () {
-  AppShell.init("settings", "Pengaturan");
+  if (!Auth.guard()) return;
+  Sidebar.init();
+  NavbarTop.init('Pengaturan');
+  ProfileDrawer.init();
+  BottomNav.init();
+  Router.init();
 
   const user = Auth.currentUser() || {};
   document.getElementById("settings-avatar").textContent = Utils.initials(user.name);
@@ -108,6 +113,6 @@
   });
 
   document.getElementById("settings-logout-btn").addEventListener("click", function() {
-    AppShell.confirmLogout();
+    ProfileDrawer.logout();
   });
 })();

@@ -205,6 +205,16 @@ const HealthState = {
     var entry = history.find(function(h) { return h.day === yKey; });
     return entry ? entry.score : null;
   },
+  getHealthPreferences() {
+    var s = this.getSettings();
+    return { targetWater: s.targetWater, targetSleep: s.targetSleep, targetActivity: s.targetActivity, reminderTime: s.reminderTime };
+  },
+  setHealthPreference(key, value) {
+    var s = this.getSettings();
+    s[key] = value;
+    this.setSettings(s);
+    return s;
+  },
 };
 
 window.HealthState = HealthState;

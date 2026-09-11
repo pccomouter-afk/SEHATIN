@@ -1,0 +1,103 @@
+.article-detail-body {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.article-detail-body h1 {
+  font-size: var(--fs-h1-mobile);
+  font-weight: var(--fw-extrabold);
+  line-height: var(--lh-tight);
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-5);
+}
+
+.article-detail-body p {
+  color: var(--text-secondary);
+  line-height: var(--lh-loose);
+  margin-bottom: var(--space-4);
+  font-size: var(--fs-body);
+}
+
+.article-detail-body h2,
+.article-detail-body h3 {
+  font-size: var(--fs-h3-mobile);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  color: var(--text-primary);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-3);
+}
+
+.article-detail-body ul {
+  list-style: disc;
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+
+.article-detail-body ul li {
+  color: var(--text-secondary);
+  line-height: var(--lh-loose);
+  margin-bottom: var(--space-2);
+}
+
+.comment-list {
+  margin-top: var(--space-8);
+}
+
+.comment-item {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
+}
+
+.comment-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+  flex-shrink: 0;
+}
+
+.comment-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.comment-content strong {
+  font-size: var(--fs-small);
+  color: var(--navy);
+  font-weight: var(--fw-semibold);
+}
+
+.comment-content p {
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+  line-height: var(--lh-normal);
+  margin-top: 2px;
+}
+
+.comment-actions {
+  font-size: var(--fs-xsmall);
+  color: var(--text-muted);
+  margin-top: var(--space-1);
+  display: flex;
+  gap: var(--space-3);
+}
+
+@media (min-width: 1024px) {
+  .article-detail-body h1 {
+    font-size: var(--fs-h1-desktop);
+  }
+
+  .article-detail-body h2,
+  .article-detail-body h3 {
+    font-size: var(--fs-h3-desktop);
+  }
+}

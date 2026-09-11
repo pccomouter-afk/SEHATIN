@@ -1,0 +1,118 @@
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay);
+  z-index: 900;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+}
+
+.drawer-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  height: 100dvh;
+  width: 380px;
+  max-width: 90vw;
+  background: var(--bg);
+  z-index: 901;
+  box-shadow: var(--shadow-lg);
+  transform: translateX(100%);
+  transition: transform var(--transition-slow);
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer-panel.is-open {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5);
+}
+
+.drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-5);
+}
+
+.drawer-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  padding: var(--space-5) 0 var(--space-6);
+}
+
+.drawer-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: var(--fw-bold);
+}
+
+.drawer-profile strong {
+  font-size: var(--fs-body);
+  color: var(--navy);
+  font-weight: var(--fw-semibold);
+}
+
+.drawer-profile span {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+
+.drawer-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.drawer-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-2);
+  border-radius: var(--radius-md);
+  color: var(--navy);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-body);
+}
+
+.drawer-menu-item:hover {
+  background: var(--bg-soft);
+}
+
+.drawer-menu-item i:first-child {
+  width: 22px;
+  color: var(--primary-dark);
+  text-align: center;
+}
+
+.drawer-menu-item .fa-chevron-right {
+  margin-left: auto;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.drawer-footer {
+  padding: var(--space-5);
+}

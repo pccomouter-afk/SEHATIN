@@ -27,6 +27,9 @@ const Storage = {
       window.localStorage.removeItem(k);
     });
   },
+  sehatin_user: "user",
+  sehatin_health_preferences: "settings",
+  sehatin_comments: "comments",
 };
 
 window.Storage = Storage;

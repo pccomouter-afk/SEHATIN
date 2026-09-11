@@ -1,5 +1,10 @@
 (function () {
-  AppShell.init("journal", "Jurnal Kesehatan");
+  if (!Auth.guard()) return;
+  Sidebar.init();
+  NavbarTop.init('Jurnal Kesehatan');
+  ProfileDrawer.init();
+  BottomNav.init();
+  Router.init();
 
   ["mood", "energi", "tidur", "hidrasi"].forEach(function(id) {
     const input = document.getElementById(id);

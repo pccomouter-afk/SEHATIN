@@ -1,5 +1,10 @@
 (function () {
-  AppShell.init("facilities", "Fasilitas Kesehatan");
+  if (!Auth.guard()) return;
+  Sidebar.init();
+  NavbarTop.init('Fasilitas Kesehatan');
+  ProfileDrawer.init();
+  BottomNav.init();
+  Router.init();
 
   let activeType = "Semua";
   let searchTerm = "";

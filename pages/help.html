@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>Fasilitas Kesehatan - SEHATIN</title>
+<title>Bantuan - SEHATIN</title>
 <link rel="stylesheet" href="../css/main.css" />
-<link rel="stylesheet" href="../css/pages/facilities.css" />
+<link rel="stylesheet" href="../css/pages/settings.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body class="app-body">
 <aside class="sidebar desktop-only" id="app-sidebar">
@@ -26,30 +25,24 @@
 <a class="sidebar-nav-item sidebar-logout" id="sidebar-logout-btn" href="#"><i class="fa-solid fa-right-from-bracket"></i><span class="sidebar-nav-label">Keluar</span></a>
 </div>
 </aside>
-<header class="topbar desktop-only" id="topbar"><span class="topbar-title">Fasilitas Kesehatan</span><div class="topbar-actions"><div class="topbar-search" id="topbar-search-wrap" style="position:relative;"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="topbar-search-input" placeholder="Cari fasilitas, artikel..." autocomplete="off" /><div class="search-results-panel" id="topbar-search-results"></div></div><button class="btn-icon" id="topbar-notif-btn" aria-label="Notifikasi" style="position:relative;"><i class="fa-solid fa-bell"></i></button><button class="topbar-avatar-btn" id="topbar-avatar-btn" aria-label="Buka profil"><div class="sidebar-avatar" id="topbar-avatar-initials">U</div></button></div></header>
-<header class="mobile-header hide-desktop" id="mobile-header"><span class="mobile-header-title">Fasilitas Kesehatan</span><div class="mobile-header-actions"><button class="btn-icon" id="mobile-notif-btn" aria-label="Notifikasi" style="position:relative;"><i class="fa-solid fa-bell"></i></button><button class="topbar-avatar-btn" id="mobile-avatar-btn" aria-label="Buka profil"><div class="sidebar-avatar" id="mobile-avatar-initials">U</div></button></div></header>
+<header class="topbar desktop-only" id="topbar"><span class="topbar-title">Bantuan</span><div class="topbar-actions"><div class="topbar-search" id="topbar-search-wrap" style="position:relative;"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="topbar-search-input" placeholder="Cari fasilitas, artikel..." autocomplete="off" /><div class="search-results-panel" id="topbar-search-results"></div></div><button class="btn-icon" id="topbar-notif-btn" aria-label="Notifikasi" style="position:relative;"><i class="fa-solid fa-bell"></i></button><button class="topbar-avatar-btn" id="topbar-avatar-btn" aria-label="Buka profil"><div class="sidebar-avatar" id="topbar-avatar-initials">U</div></button></div></header>
+<header class="mobile-header hide-desktop" id="mobile-header"><span class="mobile-header-title">Bantuan</span><div class="mobile-header-actions"><button class="btn-icon" id="mobile-notif-btn" aria-label="Notifikasi" style="position:relative;"><i class="fa-solid fa-bell"></i></button><button class="topbar-avatar-btn" id="mobile-avatar-btn" aria-label="Buka profil"><div class="sidebar-avatar" id="mobile-avatar-initials">U</div></button></div></header>
 <div class="drawer-overlay" id="profile-drawer-overlay"></div>
 <aside class="drawer-panel" id="profile-drawer-panel"><div class="drawer-header"><strong>Profil Saya</strong><button class="btn-icon" id="drawer-close-btn" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button></div><div class="drawer-body"><div class="drawer-profile"><div class="drawer-avatar" id="drawer-avatar-initials">U</div><strong id="drawer-user-name">Pengguna</strong><span class="text-muted text-small" id="drawer-user-email"></span></div><div class="drawer-menu"><a class="drawer-menu-item" href="settings.html"><i class="fa-solid fa-user"></i><span>Profil</span><i class="fa-solid fa-chevron-right"></i></a><a class="drawer-menu-item" href="settings.html"><i class="fa-solid fa-gear"></i><span>Pengaturan</span><i class="fa-solid fa-chevron-right"></i></a><a class="drawer-menu-item" href="settings.html"><i class="fa-solid fa-heart-pulse"></i><span>Preferensi Kesehatan</span><i class="fa-solid fa-chevron-right"></i></a><a class="drawer-menu-item" href="settings.html"><i class="fa-solid fa-circle-question"></i><span>Bantuan</span><i class="fa-solid fa-chevron-right"></i></a></div></div><div class="drawer-footer"><button class="btn btn-danger btn-block" id="drawer-logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Keluar</button></div></aside>
 <nav class="bottom-nav hide-desktop" id="app-bottom-nav"><a class="bottom-nav-item" href="dashboard.html"><i class="fa-solid fa-house"></i><span>Beranda</span></a><a class="bottom-nav-item" href="health-check.html"><i class="fa-solid fa-clipboard-check"></i><span>Periksa</span></a><a class="bottom-nav-item" href="health.html"><i class="fa-solid fa-heart-pulse"></i><span>Kesehatan</span></a><a class="bottom-nav-item" href="journal.html"><i class="fa-solid fa-book-medical"></i><span>Jurnal</span></a><a class="bottom-nav-item" href="facilities.html"><i class="fa-solid fa-hospital"></i><span>Fasilitas</span></a><button class="bottom-nav-item" id="bottom-nav-profile"><i class="fa-solid fa-user"></i><span>Profil</span></button></nav>
 <div class="app-layout" id="app-layout">
 <div class="app-main-column" id="app-main-column">
-<h1>Cari fasilitas kesehatan di sekitar kamu</h1>
-<p class="mt-2 mb-6">Temukan klinik, rumah sakit, apotek, dan UGD terdekat.</p>
-<div class="facilities-toolbar">
-<div class="facilities-search input-wrap"><i class="fa-solid fa-location-dot input-icon"></i><input class="form-control" type="text" id="facility-search-input" placeholder="Ketik kota, kecamatan, atau alamat..." /><button class="btn btn-secondary btn-sm" id="facility-use-location-btn" type="button">Gunakan lokasi saya</button></div>
-<div class="facilities-filter-row" id="facility-filter-row">
-<button class="select-pill is-selected" data-type="Semua">Semua</button>
-<button class="select-pill" data-type="Klinik">Klinik</button>
-<button class="select-pill" data-type="Rumah Sakit">Rumah Sakit</button>
-<button class="select-pill" data-type="Apotek">Apotek</button>
-<button class="select-pill" data-type="UGD">UGD</button>
-<button class="select-pill" id="favorite-filter-btn" data-type="favorit">Favorit</button>
+<main class="app-page">
+<div class="section-stack">
+<h1>Bantuan</h1>
+<p class="mt-2">Pertanyaan umum tentang SEHATIN.</p>
+<div class="card">
+<div class="faq-list" id="faq-list"></div>
 </div>
 </div>
-<div class="facility-map" id="facility-map"></div>
-<div class="facilities-list" id="facilities-list"></div>
+</main>
 </div>
 </div>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="../js/core/storage.js"></script><script src="../js/core/utils.js"></script><script src="../js/core/auth.js"></script><script src="../js/core/state.js"></script><script src="../js/core/mock-data.js"></script><script src="../js/core/router.js"></script><script src="../js/core/user.js"></script><script src="../js/components/toast.js"></script><script src="../js/components/modal.js"></script><script src="../js/features/search.js"></script><script src="../js/components/sidebar.js"></script><script src="../js/components/navbar-top.js"></script><script src="../js/components/profile-drawer.js"></script><script src="../js/components/bottom-nav.js"></script><script src="../js/pages/facilities.js"></script>
+<script src="../js/core/storage.js"></script><script src="../js/core/utils.js"></script><script src="../js/core/auth.js"></script><script src="../js/core/state.js"></script><script src="../js/core/mock-data.js"></script><script src="../js/core/router.js"></script><script src="../js/core/user.js"></script><script src="../js/components/toast.js"></script><script src="../js/components/modal.js"></script><script src="../js/features/search.js"></script><script src="../js/components/sidebar.js"></script><script src="../js/components/navbar-top.js"></script><script src="../js/components/profile-drawer.js"></script><script src="../js/components/bottom-nav.js"></script><script src="../js/pages/help.js"></script>
 </body>
 </html>
