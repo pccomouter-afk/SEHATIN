@@ -21,7 +21,7 @@
     </div>
     <div class="public-nav-actions">
       <a href="pages/login.html" class="btn btn-ghost hide-mobile">Masuk</a>
-      <a href="pages/register.html" class="btn btn-primary">Mulai Sekarang</a>
+      <a href="pages/register.html" class="btn btn-primary">Mulai</a>
     </div>
   </div>
 </nav>
@@ -42,16 +42,17 @@
         <div class="flex items-center justify-between">
           <div>
             <p class="text-small text-muted">Health Score</p>
-            <h2 style="font-size:40px;">82</h2>
+            <h2 style="font-size:40px;">Belum tersedia</h2>
           </div>
           <div class="icon-chip" style="width:56px;height:56px;font-size:22px;"><i class="fa-solid fa-heart-pulse"></i></div>
         </div>
         <div class="mt-4 flex-col gap-2">
-          <div class="metric-progress"><div class="metric-progress-fill" style="width:85%;"></div></div>
-          <div class="flex justify-between text-xsmall text-muted"><span>Tidur</span><span>85</span></div>
-          <div class="metric-progress"><div class="metric-progress-fill" style="width:72%;background:var(--secondary);"></div></div>
-          <div class="flex justify-between text-xsmall text-muted"><span>Hidrasi</span><span>72</span></div>
+          <div class="empty-state" style="padding:var(--space-6) var(--space-4);">
+            <div class="empty-state-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <p class="text-small text-muted">Belum ada data pemeriksaan</p>
+          </div>
         </div>
+        <a href="pages/register.html" class="btn btn-primary btn-block mt-4"><i class="fa-solid fa-clipboard-check"></i> Mulai Pemeriksaan</a>
         <div class="hero-preview-badge b1"><i class="fa-solid fa-clipboard-check" style="color:var(--primary);"></i> Pemeriksaan Selesai</div>
         <div class="hero-preview-badge b2"><i class="fa-solid fa-book-medical" style="color:var(--secondary);"></i> Jurnal Tersimpan</div>
       </div>
@@ -115,12 +116,12 @@
           <div class="score-ring-wrap" style="width:96px;height:96px;">
             <svg viewBox="0 0 128 128" width="96" height="96">
               <circle class="score-ring-bg" cx="64" cy="64" r="54"></circle>
-              <circle class="score-ring-fill" cx="64" cy="64" r="54" style="stroke-dasharray:339;stroke-dashoffset:70;"></circle>
+              <circle class="score-ring-fill" cx="64" cy="64" r="54" style="stroke-dasharray:339;stroke-dashoffset:339;"></circle>
             </svg>
           </div>
           <div>
-            <span class="metric-value">82</span>
-            <p class="text-small text-muted">Baik, naik 4 poin dari kemarin</p>
+            <span class="metric-value">Belum tersedia</span>
+            <p class="text-small text-muted">Lakukan pemeriksaan untuk melihat skormu</p>
           </div>
         </div>
       </div>
@@ -136,11 +137,11 @@
       </div>
       <div class="feature-split-visual">
         <div class="feature-visual-card">
-          <div class="facility-card" style="border:none;padding:0;">
-            <div class="facility-card-thumb"><i class="fa-solid fa-hospital"></i></div>
+<div class="facility-card" style="border:none;padding:0;">
+            <div class="facility-card-thumb"><i class="fa-solid fa-magnifying-glass"></i></div>
             <div class="facility-card-body">
-              <strong>Klinik Sehat Bersama</strong>
-              <div class="facility-card-meta"><span>Klinik</span><span>&middot;</span><span>0,8 km</span><span>&middot;</span><span><i class="fa-solid fa-star" style="color:var(--yellow);"></i> 4,7</span></div>
+              <strong>Cari Fasilitas Kesehatan</strong>
+              <div class="facility-card-meta"><span>Klik untuk mencari</span></div>
             </div>
           </div>
         </div>

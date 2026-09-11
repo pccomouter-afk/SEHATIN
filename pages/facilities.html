@@ -18,8 +18,9 @@
 
       <div class="facilities-toolbar">
         <div class="facilities-search input-wrap">
-          <i class="fa-solid fa-magnifying-glass input-icon"></i>
-          <input class="form-control" type="text" id="facility-search-input" placeholder="Cari nama atau jenis fasilitas..." />
+          <i class="fa-solid fa-location-dot input-icon"></i>
+          <input class="form-control" type="text" id="facility-search-input" placeholder="Ketik kota, kecamatan, atau alamat..." />
+          <button class="btn btn-secondary btn-sm" id="facility-use-location-btn" type="button">Gunakan lokasi saya</button>
         </div>
         <div class="facilities-filter-row" id="facility-filter-row">
           <button class="select-pill is-selected" data-type="Semua">Semua</button>
@@ -32,7 +33,6 @@
       </div>
 
       <div class="facility-map" id="facility-map"></div>
-
       <div class="facilities-list" id="facilities-list"></div>
     </main>
   </div>
@@ -41,8 +41,6 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="../js/core/storage.js"></script>
 <script src="../js/core/utils.js"></script>
-<script src="../js/core/mock-data.js"></script>
-<script src="../js/core/auth.js"></script>
 <script src="../js/core/state.js"></script>
 <script src="../js/components/toast.js"></script>
 <script src="../js/components/modal.js"></script>

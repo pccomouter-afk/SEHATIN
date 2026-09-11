@@ -89,7 +89,4 @@
   justify-content: space-between;
   gap: var(--space-3);
   padding: var(--space-4);
-  border-bottom: 1px solid var(--border);
 }
-
-.hc-history-item:last-child { border-bottom: none; }

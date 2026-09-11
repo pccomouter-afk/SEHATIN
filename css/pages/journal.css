@@ -23,10 +23,11 @@
   display: flex;
   gap: var(--space-3);
   padding: var(--space-4);
-  border-bottom: 1px solid var(--border);
 }
 
-.journal-entry-item:last-child { border-bottom: none; }
+.journal-entry-item + .journal-entry-item {
+  margin-top: var(--space-2);
+}
 
 .insight-card {
   background: linear-gradient(135deg, var(--cream) 0%, #fff8ec 100%);

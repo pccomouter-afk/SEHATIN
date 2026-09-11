@@ -2,22 +2,44 @@
   AppShell.init("health", "Kesehatan Saya");
 
   function switchTab(tab) {
-    Utils.qsa(".health-tab-btn").forEach((btn) => {
+    Utils.qsa(".health-tab-btn").forEach(function(btn) {
       btn.classList.toggle("is-active", btn.getAttribute("data-tab") === tab);
     });
-    ["tidur", "hidrasi", "aktivitas", "wellness"].forEach((t) => {
+    ["tidur", "hidrasi", "aktivitas", "wellness"].forEach(function(t) {
       document.getElementById("tab-" + t).style.display = t === tab ? "" : "none";
     });
   }
 
-  Utils.qsa(".health-tab-btn").forEach((btn) => {
-    btn.addEventListener("click", function () {
+  Utils.qsa(".health-tab-btn").forEach(function(btn) {
+    btn.addEventListener("click", function() {
       switchTab(this.getAttribute("data-tab"));
     });
   });
 
   const params = new URLSearchParams(window.location.search);
   if (params.get("tab")) switchTab(params.get("tab"));
+
+  function renderSleep() {
+    const sleep = Storage.get("sleep", null);
+    const box = document.getElementById("sleep-data");
+    if (!box) return;
+    if (!sleep || !sleep.hours) {
+      box.innerHTML = '<div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-moon"></i></div><p>Belum ada data tidur tercatat.</p></div>';
+      return;
+    }
+    const hours = sleep.hours || sleep.duration || 0;
+    const quality = sleep.quality || "Belum dinilai";
+    const wakeHour = sleep.wakeHour || "Belum diatur";
+    const bedHour = sleep.bedHour || "Belum diatur";
+    box.innerHTML =
+      '<div class="grid grid-2">' +
+      '<div class="metric-card"><span class="metric-label">Durasi Tidur</span><span class="metric-value">' + hours + ' jam</span></div>' +
+      '<div class="metric-card"><span class="metric-label">Kualitas Tidur</span><span class="metric-value">' + quality + '</span></div>' +
+      '<div class="metric-card"><span class="metric-label">Jam Tidur</span><span class="metric-value">' + bedHour + '</span></div>' +
+      '<div class="metric-card"><span class="metric-label">Jam Bangun</span><span class="metric-value">' + wakeHour + '</span></div>' +
+      '</div>';
+  }
+  renderSleep();
 
   function renderHydration() {
     const data = HealthState.getHydration();
@@ -27,12 +49,12 @@
     document.getElementById("hydration-text").textContent = (data.current / 1000).toFixed(1) + " / " + (data.target / 1000).toFixed(1) + " L";
   }
   renderHydration();
-  document.getElementById("add-250").addEventListener("click", function () {
+  document.getElementById("add-250").addEventListener("click", function() {
     HealthState.addHydration(250);
     renderHydration();
     Toast.success("Berhasil menambah 250 ml air minum.");
   });
-  document.getElementById("add-500").addEventListener("click", function () {
+  document.getElementById("add-500").addEventListener("click", function() {
     HealthState.addHydration(500);
     renderHydration();
     Toast.success("Berhasil menambah 500 ml air minum.");
@@ -62,21 +84,21 @@
   }
   renderActivityLog();
 
-  document.getElementById("add-activity-btn").addEventListener("click", function () {
+  document.getElementById("add-activity-btn").addEventListener("click", function() {
     const card = document.getElementById("activity-form-card");
     card.style.display = card.style.display === "none" ? "block" : "none";
   });
 
   let selectedIntensity = "Ringan";
-  Utils.qsa("[data-intensity]").forEach((btn) => {
-    btn.addEventListener("click", function () {
+  Utils.qsa("[data-intensity]").forEach(function(btn) {
+    btn.addEventListener("click", function() {
       selectedIntensity = this.getAttribute("data-intensity");
-      Utils.qsa("[data-intensity]").forEach((b) => b.classList.remove("is-selected"));
+      Utils.qsa("[data-intensity]").forEach(function(b) { b.classList.remove("is-selected"); });
       this.classList.add("is-selected");
     });
   });
 
-  document.getElementById("activity-form").addEventListener("submit", function (e) {
+  document.getElementById("activity-form").addEventListener("submit", function(e) {
     e.preventDefault();
     const type = document.getElementById("activity-type").value;
     const duration = parseInt(document.getElementById("activity-duration").value, 10);
@@ -86,7 +108,7 @@
       return;
     }
     errorEl.classList.remove("is-visible");
-    HealthState.addActivity({ type, duration, intensity: selectedIntensity });
+    HealthState.addActivity({ type: type, duration: duration, intensity: selectedIntensity });
     renderActivityLog();
     document.getElementById("activity-form").reset();
     document.getElementById("activity-form-card").style.display = "none";
@@ -109,7 +131,7 @@
     }
     updatePhase();
     const phaseInterval = setInterval(updatePhase, 4000);
-    breathTimer = setInterval(function () {
+    breathTimer = setInterval(function() {
       remaining -= 1;
       const m = String(Math.floor(remaining / 60)).padStart(2, "0");
       const s = String(remaining % 60).padStart(2, "0");
@@ -121,7 +143,7 @@
         Toast.success("Latihan pernapasan selesai.");
       }
     }, 1000);
-    document.getElementById("stop-breathing").onclick = function () {
+    document.getElementById("stop-breathing").onclick = function() {
       clearInterval(breathTimer);
       clearInterval(phaseInterval);
       stopBreathing();
@@ -131,12 +153,12 @@
     document.getElementById("breathing-view").style.display = "none";
     document.getElementById("wellness-intro").style.display = "block";
   }
-  Utils.qsa("[data-breathe-min]").forEach((btn) => {
-    btn.addEventListener("click", function () {
+  Utils.qsa("[data-breathe-min]").forEach(function(btn) {
+    btn.addEventListener("click", function() {
       startBreathing(parseInt(this.getAttribute("data-breathe-min"), 10));
     });
   });
-  document.getElementById("start-mindfulness").addEventListener("click", function () {
+  document.getElementById("start-mindfulness").addEventListener("click", function() {
     startBreathing(5);
   });
 
@@ -144,7 +166,7 @@
   let wIndex = 0;
   let wAnswers = {};
 
-  document.getElementById("start-wellness-btn").addEventListener("click", function () {
+  document.getElementById("start-wellness-btn").addEventListener("click", function() {
     wIndex = 0;
     wAnswers = {};
     document.getElementById("wellness-intro").style.display = "none";
@@ -169,8 +191,8 @@
           "</span></button>"
       )
       .join("");
-    Utils.qsa("[data-w-option]").forEach((btn) => {
-      btn.addEventListener("click", function () {
+    Utils.qsa("[data-w-option]").forEach(function(btn) {
+      btn.addEventListener("click", function() {
         wAnswers[q.id] = this.getAttribute("data-w-option");
         renderWQuestion();
       });
@@ -179,13 +201,13 @@
     document.getElementById("w-next-btn").textContent = wIndex === wQuestions.length - 1 ? "Lihat Hasil" : "Selanjutnya";
   }
 
-  document.getElementById("w-prev-btn").addEventListener("click", function () {
+  document.getElementById("w-prev-btn").addEventListener("click", function() {
     if (wIndex === 0) return;
     wIndex -= 1;
     renderWQuestion();
   });
 
-  document.getElementById("w-next-btn").addEventListener("click", function () {
+  document.getElementById("w-next-btn").addEventListener("click", function() {
     const q = wQuestions[wIndex];
     if (!wAnswers[q.id]) {
       Toast.error("Pilih salah satu jawaban terlebih dahulu.");
@@ -198,14 +220,14 @@
       const guidance = WellnessEngine.computeGuidance(wAnswers);
       document.getElementById("w-result-title").textContent = guidance.title;
       document.getElementById("w-result-points").innerHTML = guidance.points
-        .map((p) => '<div class="hc-list-item mt-2"><i class="fa-solid fa-circle-check" style="color:var(--primary);"></i><span>' + p + "</span></div>")
+        .map(function(p) { return '<div class="hc-list-item mt-2"><i class="fa-solid fa-circle-check" style="color:var(--primary);"></i><span>' + p + "</span></div>"; })
         .join("");
       document.getElementById("wellness-question-view").style.display = "none";
       document.getElementById("wellness-result-view").style.display = "block";
     }
   });
 
-  document.getElementById("wellness-back-btn").addEventListener("click", function () {
+  document.getElementById("wellness-back-btn").addEventListener("click", function() {
     document.getElementById("wellness-result-view").style.display = "none";
     document.getElementById("wellness-intro").style.display = "block";
   });

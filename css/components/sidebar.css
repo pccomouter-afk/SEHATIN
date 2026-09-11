@@ -2,7 +2,6 @@
   width: var(--sidebar-width);
   flex-shrink: 0;
   background: var(--bg);
-  border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -10,6 +9,7 @@
   top: 0;
   transition: width var(--transition-slow);
   z-index: 40;
+  box-shadow: var(--shadow-sm);
 }
 
 .sidebar.is-collapsed {
@@ -72,7 +72,7 @@
   font-weight: var(--fw-medium);
   font-size: var(--fs-body);
   position: relative;
-  transition: background var(--transition-fast), color var(--transition-fast);
+  transition: all var(--transition-fast);
   white-space: nowrap;
 }
 
@@ -81,16 +81,39 @@
   text-align: center;
   font-size: 18px;
   flex-shrink: 0;
+  transition: transform var(--transition-fast), color var(--transition-fast);
 }
 
 .sidebar-nav-item:hover {
-  background: var(--bg-muted);
-  color: var(--navy);
+   background: var(--primary-soft);
+   color: var(--navy);
+}
+
+.sidebar-nav-item:hover i {
+   color: var(--primary-dark);
+   transform: translateX(2px);
 }
 
 .sidebar-nav-item.is-active {
-  background: var(--primary);
-  color: var(--text-inverse);
+   background: var(--primary-soft);
+   color: var(--primary-dark);
+   font-weight: var(--fw-bold);
+}
+
+.sidebar-nav-item.is-active i {
+   color: var(--primary-dark);
+}
+
+.sidebar-nav-item.is-active::before {
+   content: "";
+   position: absolute;
+   left: 0;
+   top: 50%;
+   transform: translateY(-50%);
+   width: 3px;
+   height: 60%;
+   background: var(--primary-dark);
+   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 .sidebar.is-collapsed .sidebar-nav-item {
@@ -132,11 +155,12 @@
   padding: var(--space-2);
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: background var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .sidebar-user:hover {
-  background: var(--bg-muted);
+  background: var(--bg-soft);
+  color: var(--primary);
 }
 
 .sidebar.is-collapsed .sidebar-user {
@@ -189,11 +213,12 @@
   color: var(--text-secondary);
   font-size: var(--fs-small);
   font-weight: var(--fw-medium);
+  transition: all var(--transition-fast);
 }
 
 .sidebar-collapse-btn:hover {
-  background: var(--bg-muted);
-  color: var(--navy);
+  background: var(--bg-soft);
+  color: var(--primary);
 }
 
 .sidebar-logout {

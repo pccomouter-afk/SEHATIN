@@ -78,7 +78,6 @@
   position: absolute;
   z-index: 40;
   background: var(--bg);
-  border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   padding: var(--space-4);

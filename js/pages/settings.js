@@ -9,7 +9,7 @@
   document.getElementById("settings-email").value = user.email || "";
   document.getElementById("settings-phone").value = user.phone || "";
 
-  document.getElementById("profile-form").addEventListener("submit", function (e) {
+  document.getElementById("profile-form").addEventListener("submit", function(e) {
     e.preventDefault();
     const name = document.getElementById("settings-name").value.trim();
     const email = document.getElementById("settings-email").value.trim();
@@ -18,7 +18,7 @@
       Toast.error("Pastikan nama dan email terisi dengan benar.");
       return;
     }
-    Auth.updateProfile({ name, email, phone });
+    Auth.updateProfile({ name: name, email: email, phone: phone });
     document.getElementById("settings-avatar").textContent = Utils.initials(name);
     document.getElementById("settings-name-preview").textContent = name;
     document.getElementById("settings-email-preview").textContent = email;
@@ -31,7 +31,7 @@
   document.getElementById("pref-activity").value = settings.targetActivity;
   document.getElementById("pref-reminder").value = settings.reminderTime;
 
-  document.getElementById("preference-form").addEventListener("submit", function (e) {
+  document.getElementById("preference-form").addEventListener("submit", function(e) {
     e.preventDefault();
     const current = HealthState.getSettings();
     current.targetWater = parseFloat(document.getElementById("pref-water").value) || current.targetWater;
@@ -42,10 +42,10 @@
     Toast.success("Pengaturan berhasil diperbarui.");
   });
 
-  Utils.qsa("[data-notif]").forEach((input) => {
+  Utils.qsa("[data-notif]").forEach(function(input) {
     const key = input.getAttribute("data-notif");
     input.checked = !!settings[key];
-    input.addEventListener("change", function () {
+    input.addEventListener("change", function() {
       const current = HealthState.getSettings();
       current[key] = this.checked;
       HealthState.setSettings(current);
@@ -53,10 +53,10 @@
     });
   });
 
-  Utils.qsa("[data-appearance]").forEach((btn) => {
+  Utils.qsa("[data-appearance]").forEach(function(btn) {
     if (btn.getAttribute("data-appearance") === settings.appearance) btn.classList.add("is-selected");
-    btn.addEventListener("click", function () {
-      Utils.qsa("[data-appearance]").forEach((b) => b.classList.remove("is-selected"));
+    btn.addEventListener("click", function() {
+      Utils.qsa("[data-appearance]").forEach(function(b) { b.classList.remove("is-selected"); });
       this.classList.add("is-selected");
       const current = HealthState.getSettings();
       current.appearance = this.getAttribute("data-appearance");
@@ -68,22 +68,28 @@
   document.getElementById("privasi-check-count").textContent = HealthState.getHealthCheckHistory().length + " hasil tersimpan";
   document.getElementById("privasi-journal-count").textContent = HealthState.getJournalHistory().length + " catatan tersimpan";
 
-  document.getElementById("delete-all-data-btn").addEventListener("click", function () {
+  document.getElementById("delete-all-data-btn").addEventListener("click", function() {
     Modal.confirm({
       title: "Hapus semua data lokal?",
       message: "Seluruh riwayat pemeriksaan, jurnal, dan preferensi akan dihapus secara permanen dari perangkat ini.",
       icon: "fa-trash",
       confirmText: "Ya, Hapus Semua",
-      onConfirm: () => {
+      onConfirm: function() {
         Storage.clear(true);
         Toast.success("Data berhasil dihapus.");
-        setTimeout(() => window.location.reload(), 600);
+        setTimeout(function() { window.location.reload(); }, 600);
       },
     });
   });
 
+  const faqData = [
+    { q: "Apa itu SEHATIN?", a: "SEHATIN adalah teman digital kesehatan yang membantu kamu memahami kondisi harian, membangun kebiasaan sehat, mencatat kondisi, dan menemukan fasilitas kesehatan terdekat." },
+    { q: "Apakah SEHATIN mendiagnosis penyakit?", a: "Tidak. SEHATIN bukan alat diagnosis. Hasil pemeriksaan di SEHATIN hanya berupa gambaran awal dan rekomendasi langkah, bukan diagnosis medis." },
+    { q: "Bagaimana data disimpan?", a: "Seluruh data pada versi ini disimpan secara lokal di perangkatmu menggunakan localStorage, tanpa dikirim ke server manapun." },
+    { q: "Bagaimana cara menyimpan jurnal?", a: "Buka menu Jurnal, isi kondisi harianmu, lalu tekan tombol Simpan Jurnal. Catatanmu akan otomatis tersimpan di Riwayat Jurnal." },
+  ];
   const faqBox = document.getElementById("faq-list");
-  faqBox.innerHTML = MockData.faq
+  faqBox.innerHTML = faqData
     .map(
       (f, i) =>
         '<div class="faq-item" data-faq="' +
@@ -95,13 +101,13 @@
         "</p></div>"
     )
     .join("");
-  Utils.qsa("[data-faq]", faqBox).forEach((item) => {
-    item.querySelector(".faq-question").addEventListener("click", function () {
+  Utils.qsa("[data-faq]", faqBox).forEach(function(item) {
+    item.querySelector(".faq-question").addEventListener("click", function() {
       item.classList.toggle("is-open");
     });
   });
 
-  document.getElementById("settings-logout-btn").addEventListener("click", function () {
+  document.getElementById("settings-logout-btn").addEventListener("click", function() {
     AppShell.confirmLogout();
   });
 })();

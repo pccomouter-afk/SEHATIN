@@ -39,6 +39,10 @@
   flex-shrink: 0;
 }
 
+.topbar-actions .btn {
+  max-width: 100%;
+}
+
 .topbar-search {
   display: none;
   align-items: center;
@@ -129,6 +133,10 @@
   border-bottom: 1px solid var(--border);
 }
 
+@media (min-width: 1024px) {
+  .mobile-header { display: none; }
+}
+
 .mobile-header-title {
   font-size: 17px;
   font-weight: var(--fw-bold);
@@ -142,4 +150,8 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
+}
+
+.mobile-header-actions .btn {
+  max-width: 100%;
 }

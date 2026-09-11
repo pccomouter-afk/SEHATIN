@@ -88,21 +88,24 @@
 
 .hero-preview-card {
   background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-card);
   padding: var(--space-6);
   max-width: 360px;
   margin: 0 auto;
   position: relative;
 }
 
+.hero-preview-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
 .hero-preview-badge {
   position: absolute;
   background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
+  border-radius: var(--radius-md);
   padding: var(--space-3) var(--space-4);
   display: flex;
   align-items: center;
@@ -154,9 +157,8 @@
 
 .feature-visual-card {
   background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
+  border-radius: var(--radius-card);
   padding: var(--space-6);
 }
 
@@ -193,4 +195,16 @@
     justify-content: space-between;
     text-align: left;
   }
+}
+
+.select-card {
+  background: var(--bg);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+}
+
+.select-card.is-selected {
+  background: var(--primary-soft);
+  box-shadow: var(--shadow-md);
 }

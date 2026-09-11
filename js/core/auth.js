@@ -7,9 +7,9 @@ const Auth = {
   },
   register(data) {
     const users = Storage.get("users", []);
-    const exists = users.some((u) => u.email.toLowerCase() === data.email.toLowerCase());
+    const exists = users.some(function(u) { return u.email.toLowerCase() === data.email.toLowerCase(); });
     if (exists) {
-      return { ok: false, message: "Email sudah terdaftar. Silakan masuk." };
+      return {ok: false, message: "Email sudah terdaftar. Silakan masuk."};
     }
     const user = {
       id: Utils.uid("user"),
@@ -21,17 +21,17 @@ const Auth = {
     };
     users.push(user);
     Storage.set("users", users);
-    return { ok: true, user };
+    return {ok: true, user};
   },
   login(email, password) {
     const users = Storage.get("users", []);
-    const user = users.find((u) => u.email.toLowerCase() === email.toLowerCase() && u.password === password);
+    const user = users.find(function(u) { return u.email.toLowerCase() === email.toLowerCase() && u.password === password; });
     if (!user) {
-      return { ok: false, message: "Email atau kata sandi tidak sesuai." };
+      return {ok: false, message: "Email atau kata sandi tidak sesuai."};
     }
     Storage.set("auth", true);
-    Storage.set("currentUser", { id: user.id, name: user.name, email: user.email, phone: user.phone || "" });
-    return { ok: true, user };
+    Storage.set("currentUser", {id: user.id, name: user.name, email: user.email, phone: user.phone || ""});
+    return {ok: true, user};
   },
   logout() {
     Storage.remove("auth");
@@ -45,7 +45,7 @@ const Auth = {
     const user = this.currentUser();
     if (!user) return false;
     const users = Storage.get("users", []);
-    const idx = users.findIndex((u) => u.id === user.id);
+    const idx = users.findIndex(function(u) { return u.id === user.id; });
     const merged = Object.assign({}, user, fields);
     if (idx !== -1) {
       users[idx] = Object.assign({}, users[idx], fields);

@@ -36,14 +36,14 @@
                 <circle class="score-ring-fill" cx="64" cy="64" r="54"></circle>
               </svg>
               <div class="score-ring-center">
-                <span class="score-ring-value" id="score-value">0</span>
+                <span class="score-ring-value" id="score-value"></span>
                 <span class="score-ring-status" id="score-status">Memuat</span>
               </div>
             </div>
             <div class="dash-score-info">
               <h3>Health Score</h3>
               <p class="mt-2">Skor ini dihitung dari tidur, hidrasi, aktivitas, mood, stres, dan pemulihanmu.</p>
-              <div class="badge badge-green dash-score-change" id="score-change">+0 dari kemarin</div>
+              <div class="badge badge-green dash-score-change" id="score-change"></div>
             </div>
             <div class="score-breakdown-popover" id="score-breakdown"></div>
           </div>
@@ -53,7 +53,9 @@
           <div class="section-head">
             <h2>Ringkasan Hari Ini</h2>
           </div>
-          <div class="grid grid-metrics" id="metrics-grid"></div>
+          <div class="grid grid-metrics" id="metrics-grid">
+            <div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-chart-pie"></i></div><p class="text-small text-muted">Data akan dimuat di sini</p></div>
+          </div>
         </section>
 
         <section>
@@ -74,13 +76,17 @@
               <h3>Tren Kesehatan 7 Hari</h3>
             </div>
             <svg class="trend-chart" id="trend-chart" viewBox="0 0 320 160" preserveAspectRatio="none"></svg>
+              <div id="trend-chart-container"></div>
+            <div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-chart-line"></i></div><p class="text-small text-muted">Tren akan ditampilkan di sini</p></div>
           </section>
 
           <section class="card">
             <div class="section-head">
               <h3>Rencana Sehat Hari Ini</h3>
             </div>
-            <div id="daily-plan-list"></div>
+            <div id="daily-plan-list">
+              <div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-clipboard-list"></i></div><p class="text-small text-muted">Rencana akan ditampilkan di sini</p></div>
+            </div>
           </section>
         </div>
 
@@ -97,14 +103,18 @@
             <h2>Aktivitas Terbaru</h2>
             <a href="health.html" class="link-more">Lihat semua</a>
           </div>
-          <div class="card" id="recent-activity-card"></div>
+          <div class="card" id="recent-activity-card">
+            <div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-clock-rotate-left"></i></div><p class="text-small text-muted">Aktivitas terbaru akan muncul di sini</p></div>
+          </div>
         </section>
 
         <section>
           <div class="section-head">
             <h2>Rekomendasi Untukmu</h2>
           </div>
-          <div class="grid grid-3" id="recommendation-grid"></div>
+          <div class="grid grid-3" id="recommendation-grid">
+            <div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-lightbulb"></i></div><p class="text-small text-muted">Rekomendasi akan muncul di sini</p></div>
+          </div>
         </section>
 
       </div>
@@ -114,12 +124,10 @@
 
 <script src="../js/core/storage.js"></script>
 <script src="../js/core/utils.js"></script>
-<script src="../js/core/mock-data.js"></script>
 <script src="../js/core/auth.js"></script>
 <script src="../js/core/state.js"></script>
 <script src="../js/components/toast.js"></script>
 <script src="../js/components/modal.js"></script>
-<script src="../js/features/search.js"></script>
 <script src="../js/features/health-score.js"></script>
 <script src="../js/components/navbar.js"></script>
 <script src="../js/pages/dashboard.js"></script>

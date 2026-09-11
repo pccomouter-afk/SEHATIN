@@ -94,15 +94,17 @@
             <h3>Privasi dan Keamanan</h3>
             <div class="mt-4">
               <div class="setting-row"><div class="setting-row-text"><strong>Data Lokal</strong><span class="text-small text-muted">Seluruh data tersimpan di perangkatmu</span></div></div>
-              <div class="setting-row"><div class="setting-row-text"><strong>Riwayat Pemeriksaan</strong><span class="text-small text-muted" id="privasi-check-count">0 hasil tersimpan</span></div></div>
-              <div class="setting-row"><div class="setting-row-text"><strong>Riwayat Jurnal</strong><span class="text-small text-muted" id="privasi-journal-count">0 catatan tersimpan</span></div></div>
+              <div class="setting-row"><div class="setting-row-text"><strong>Riwayat Pemeriksaan</strong><span class="text-small text-muted" id="privasi-check-count"><span class="empty-state-text">Memuat...</span></span></div></div>
+              <div class="setting-row"><div class="setting-row-text"><strong>Riwayat Jurnal</strong><span class="text-small text-muted" id="privasi-journal-count"><span class="empty-state-text">Memuat...</span></span></div></div>
             </div>
             <button class="btn btn-danger btn-block mt-4" id="delete-all-data-btn"><i class="fa-solid fa-trash"></i> Hapus Semua Data Lokal</button>
           </div>
 
           <div class="card" id="section-bantuan">
             <h3>Bantuan</h3>
-            <div class="mt-4" id="faq-list"></div>
+            <div class="mt-4" id="faq-list">
+              <div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-circle-question"></i></div><p class="text-small text-muted">FAQ akan muncul di sini</p></div>
+            </div>
           </div>
 
           <button class="btn btn-danger btn-block" id="settings-logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Keluar</button>
@@ -115,7 +117,6 @@
 
 <script src="../js/core/storage.js"></script>
 <script src="../js/core/utils.js"></script>
-<script src="../js/core/mock-data.js"></script>
 <script src="../js/core/auth.js"></script>
 <script src="../js/core/state.js"></script>
 <script src="../js/components/toast.js"></script>

@@ -40,7 +40,14 @@
   flex-direction: column;
   justify-content: center;
   background: linear-gradient(135deg, var(--light-green) 0%, #e6fbea 100%);
-  border: none;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-5);
+}
+
+.dash-greeting-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .dash-plan-item {
@@ -48,10 +55,7 @@
   align-items: center;
   gap: var(--space-3);
   padding: var(--space-3) 0;
-  border-bottom: 1px solid var(--border);
 }
-
-.dash-plan-item:last-child { border-bottom: none; }
 
 .dash-plan-check {
   width: 28px;
@@ -84,12 +88,19 @@
 
 .wellness-entry-card {
   background: linear-gradient(135deg, var(--soft-blue) 0%, #eaf4ff 100%);
-  border: none;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
   display: flex;
   align-items: center;
   gap: var(--space-4);
   justify-content: space-between;
   flex-wrap: wrap;
+  padding: var(--space-4);
+}
+
+.wellness-entry-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .recommend-card {

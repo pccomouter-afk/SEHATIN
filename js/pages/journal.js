@@ -1,10 +1,10 @@
 (function () {
   AppShell.init("journal", "Jurnal Kesehatan");
 
-  ["mood", "energi", "tidur", "hidrasi"].forEach((id) => {
+  ["mood", "energi", "tidur", "hidrasi"].forEach(function(id) {
     const input = document.getElementById(id);
     const label = document.getElementById(id + "-val");
-    input.addEventListener("input", function () {
+    input.addEventListener("input", function() {
       label.textContent = this.value;
     });
   });
@@ -37,15 +37,15 @@
           "</div></div>"
       )
       .join("");
-    Utils.qsa("[data-delete-journal]", box).forEach((btn) => {
-      btn.addEventListener("click", function () {
+    Utils.qsa("[data-delete-journal]", box).forEach(function(btn) {
+      btn.addEventListener("click", function() {
         const id = this.getAttribute("data-delete-journal");
         Modal.confirm({
           title: "Hapus catatan jurnal?",
           message: "Catatan ini tidak dapat dikembalikan setelah dihapus.",
           icon: "fa-trash",
           confirmText: "Ya, Hapus",
-          onConfirm: () => {
+          onConfirm: function() {
             HealthState.deleteJournalEntry(id);
             renderHistory();
             document.getElementById("journal-insight-text").textContent = JournalFeature.buildInsight();
@@ -57,7 +57,7 @@
   }
   renderHistory();
 
-  document.getElementById("journal-form").addEventListener("submit", function (e) {
+  document.getElementById("journal-form").addEventListener("submit", function(e) {
     e.preventDefault();
     const entry = {
       mood: document.getElementById("mood").value,
@@ -71,7 +71,7 @@
     renderHistory();
     document.getElementById("journal-insight-text").textContent = JournalFeature.buildInsight();
     this.reset();
-    ["mood", "energi", "hidrasi"].forEach((id) => (document.getElementById(id + "-val").textContent = "3"));
+    ["mood", "energi", "hidrasi"].forEach(function(id) { document.getElementById(id + "-val").textContent = "3"; });
     document.getElementById("tidur-val").textContent = "7";
     Toast.success("Jurnal berhasil disimpan.");
   });

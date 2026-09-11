@@ -26,11 +26,8 @@
         <div class="grid grid-2">
           <div class="card">
             <h3>Rutinitas Tidur</h3>
-            <div class="grid grid-2 mt-4">
-              <div class="metric-card"><span class="metric-label">Durasi Tidur</span><span class="metric-value">7 jam</span></div>
-              <div class="metric-card"><span class="metric-label">Kualitas Tidur</span><span class="metric-value">Baik</span></div>
-              <div class="metric-card"><span class="metric-label">Jam Tidur</span><span class="metric-value">22.30</span></div>
-              <div class="metric-card"><span class="metric-label">Jam Bangun</span><span class="metric-value">05.30</span></div>
+            <div id="sleep-data" class="mt-4">
+              <div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-moon"></i></div><p>Belum ada data tidur tercatat.</p></div>
             </div>
           </div>
           <div class="card">
@@ -52,8 +49,8 @@
           <div class="hydration-visual mt-4">
             <div class="hydration-bottle"><div class="hydration-bottle-fill" id="hydration-fill"></div></div>
             <div class="flex-col gap-2" style="flex:1;min-width:180px;">
-              <span class="metric-value" id="hydration-text">0 / 0 L</span>
-              <div class="metric-progress mt-2"><div class="metric-progress-fill" id="hydration-progress-fill" style="background:var(--blue);"></div></div>
+              <span class="metric-value" id="hydration-text">Belum tersedia</span>
+              <div class="metric-progress mt-2"><div class="metric-progress-fill" id="hydration-progress-fill" style="background:var(--blue);width:0%;"></div></div>
               <div class="flex gap-2 mt-4">
                 <button class="btn btn-secondary" id="add-250">+250 ml</button>
                 <button class="btn btn-primary" id="add-500">+500 ml</button>
@@ -69,7 +66,9 @@
             <h3>Aktivitas Tercatat</h3>
             <button class="btn btn-primary btn-sm" id="add-activity-btn"><i class="fa-solid fa-plus"></i> Aktivitas</button>
           </div>
-          <div id="activity-log"></div>
+          <div id="activity-log">
+            <div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-person-walking"></i></div><p class="text-small text-muted">Aktivitas tercatat akan muncul di sini</p></div>
+          </div>
         </div>
 
         <div class="card" id="activity-form-card" style="display:none;">
@@ -164,9 +163,9 @@
 
 <script src="../js/core/storage.js"></script>
 <script src="../js/core/utils.js"></script>
-<script src="../js/core/mock-data.js"></script>
 <script src="../js/core/auth.js"></script>
 <script src="../js/core/state.js"></script>
+<script src="../js/core/mock-data.js"></script>
 <script src="../js/components/toast.js"></script>
 <script src="../js/components/modal.js"></script>
 <script src="../js/features/search.js"></script>

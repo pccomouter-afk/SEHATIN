@@ -22,10 +22,10 @@
       <p>Masuk untuk melanjutkan pemeriksaan kondisi, memantau kebiasaan sehat, dan menemukan fasilitas kesehatan terdekat.</p>
     </div>
     <div class="auth-preview-card">
-      <div class="auth-preview-row"><span>Health Score hari ini</span><strong>82</strong></div>
-      <div class="auth-preview-row"><span>Tidur</span><strong>85</strong></div>
-      <div class="auth-preview-row"><span>Hidrasi</span><strong>72</strong></div>
-      <div class="auth-preview-row"><span>Aktivitas</span><strong>90</strong></div>
+      <div class="empty-state" style="padding:var(--space-4) var(--space-2);">
+        <div class="empty-state-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <p class="text-small text-muted">Belum ada data</p>
+      </div>
     </div>
   </div>
 
@@ -59,9 +59,6 @@
         <button type="submit" class="btn btn-primary btn-block btn-lg">Masuk</button>
       </form>
 
-      <div class="auth-divider">atau</div>
-      <button class="btn btn-secondary btn-block" id="demo-login-btn"><i class="fa-solid fa-user-check"></i> Coba dengan Akun Demo</button>
-
       <p class="auth-footer-link">Belum punya akun? <a href="register.html">Buat Akun</a></p>
     </div>
   </div>
@@ -69,7 +66,6 @@
 
 <script src="../js/core/storage.js"></script>
 <script src="../js/core/utils.js"></script>
-<script src="../js/core/mock-data.js"></script>
 <script src="../js/core/auth.js"></script>
 <script src="../js/components/toast.js"></script>
 <script src="../js/pages/login.js"></script>

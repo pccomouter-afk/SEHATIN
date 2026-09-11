@@ -48,7 +48,7 @@
   height: 220px;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
 }
 
 .fd-back-link {
@@ -59,4 +59,10 @@
   font-weight: var(--fw-semibold);
   font-size: var(--fs-small);
   margin-bottom: var(--space-4);
+}
+
+.fd-map .leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: var(--radius-lg);
 }

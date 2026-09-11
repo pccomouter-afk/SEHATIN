@@ -14,10 +14,60 @@
   }
   initMap();
 
+  function getDeviceLocation() {
+    return new Promise(function(resolve, reject) {
+      if (!navigator.geolocation) {
+        reject(new Error("Geolocation not supported"));
+        return;
+      }
+      navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 10000 });
+    });
+  }
+
+  async function loadFacilities() {
+    let lat = -6.235;
+    let lng = 106.805;
+    const box = document.getElementById("facilities-list");
+    const mapEl = document.getElementById("facility-map");
+    if (box) box.innerHTML = '<div class="empty-state"><div class="skeleton" style="width:64px;height:64px;border-radius:50%;margin:0 auto var(--space-4);"></div><p class="text-small text-muted">Mencari fasilitas di sekitarmu...</p></div>';
+    try {
+      const pos = await getDeviceLocation();
+      lat = pos.coords.latitude;
+      lng = pos.coords.longitude;
+      map.setView([lat, lng], 13);
+    } catch(e) {
+      Toast.error("Lokasi tidak dapat diakses. Silakan masukkan lokasi secara manual.");
+    }
+    await FacilitiesFeature.loadNearby(lat, lng);
+    renderList();
+  }
+
+  async function searchByLocation(query) {
+    const box = document.getElementById("facilities-list");
+    box.innerHTML = '<div class="empty-state"><div class="skeleton" style="width:64px;height:64px;border-radius:50%;margin:0 auto var(--space-4);"></div><p class="text-small text-muted">Mencari...</p></div>';
+    try {
+      if (!query.trim()) {
+        await loadFacilities();
+        return;
+      }
+      const results = await FacilitiesFeature.searchLocation(query);
+      if (results.length === 0) {
+        box.innerHTML = '<div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-map-marker-alt"></i></div><p>Lokasi tidak ditemukan. Coba gunakan alamat yang lebih spesifik.</p></div>';
+        return;
+      }
+      const loc = results[0];
+      map.setView([loc.lat, loc.lng], 13);
+      await FacilitiesFeature.loadNearby(loc.lat, loc.lng);
+      renderList();
+    } catch(e) {
+      box.innerHTML = '<div class="empty-state"><div class="empty-state-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><p>Gagal mencari lokasi.</p></div>';
+    }
+  }
+
   function renderMarkers(list) {
-    markers.forEach((m) => map.removeLayer(m));
+    markers.forEach(function(m) { map.removeLayer(m); });
     markers = [];
-    list.forEach((f) => {
+    list.forEach(function(f) {
       const marker = L.marker([f.lat, f.lng]).addTo(map).bindPopup("<strong>" + f.name + "</strong><br/>" + f.type);
       markers.push(marker);
     });
@@ -27,7 +77,7 @@
     let list = FacilitiesFeature.getAll();
     if (activeType === "favorit") {
       const favs = HealthState.getFavoriteFacilities();
-      list = list.filter((f) => favs.includes(f.id));
+      list = list.filter(function(f) { return favs.includes(f.id); });
     } else {
       list = FacilitiesFeature.filterByType(list, activeType);
     }
@@ -44,7 +94,7 @@
     }
     const favs = HealthState.getFavoriteFacilities();
     box.innerHTML = list
-      .map((f) => {
+      .map(function(f) {
         const isFav = favs.includes(f.id);
         return (
           '<div class="facility-card"><div class="facility-card-thumb"><i class="fa-solid fa-hospital"></i></div><div class="facility-card-body">' +
@@ -81,20 +131,20 @@
       })
       .join("");
 
-    Utils.qsa("[data-fav]", box).forEach((btn) => {
-      btn.addEventListener("click", function () {
+    Utils.qsa("[data-fav]", box).forEach(function(btn) {
+      btn.addEventListener("click", function() {
         HealthState.toggleFavoriteFacility(this.getAttribute("data-fav"));
         Toast.success("Fasilitas berhasil disimpan.");
         renderList();
       });
     });
   }
-  renderList();
+  loadFacilities();
 
-  Utils.qsa("[data-type]").forEach((btn) => {
-    btn.addEventListener("click", function () {
+  Utils.qsa("[data-type]").forEach(function(btn) {
+    btn.addEventListener("click", function() {
       activeType = this.getAttribute("data-type");
-      Utils.qsa("[data-type]").forEach((b) => b.classList.remove("is-selected"));
+      Utils.qsa("[data-type]").forEach(function(b) { b.classList.remove("is-selected"); });
       this.classList.add("is-selected");
       renderList();
     });
@@ -102,9 +152,23 @@
 
   document.getElementById("facility-search-input").addEventListener(
     "input",
-    Utils.debounce(function () {
+    Utils.debounce(function() {
       searchTerm = this.value.trim();
       renderList();
     }, 200)
   );
+
+  var searchInput = document.getElementById("facility-search-input");
+  searchInput.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" && this.value.trim()) {
+      searchByLocation(this.value.trim());
+    }
+  });
+
+  var useLocationBtn = document.getElementById("facility-use-location-btn");
+  if (useLocationBtn) {
+    useLocationBtn.addEventListener("click", function() {
+      loadFacilities();
+    });
+  }
 })();

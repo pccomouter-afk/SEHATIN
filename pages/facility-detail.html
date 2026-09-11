@@ -14,8 +14,12 @@
   <div class="app-main-column" id="app-main-column">
     <main class="app-page">
       <a href="facilities.html" class="fd-back-link"><i class="fa-solid fa-arrow-left"></i> Kembali ke Fasilitas</a>
-
-      <div id="fd-content"></div>
+      <div id="fd-content">
+        <div class="empty-state" style="padding:var(--space-8) var(--space-4);">
+          <div class="empty-state-icon"><i class="fa-solid fa-hospital"></i></div>
+          <p class="text-small text-muted">Detail fasilitas akan dimuat di sini</p>
+        </div>
+      </div>
     </main>
   </div>
 </div>
@@ -23,9 +27,8 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="../js/core/storage.js"></script>
 <script src="../js/core/utils.js"></script>
-<script src="../js/core/mock-data.js"></script>
-<script src="../js/core/auth.js"></script>
 <script src="../js/core/state.js"></script>
+<script src="../js/core/auth.js"></script>
 <script src="../js/components/toast.js"></script>
 <script src="../js/components/modal.js"></script>
 <script src="../js/features/search.js"></script>

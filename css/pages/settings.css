@@ -16,11 +16,8 @@
 }
 
 .faq-item {
-  border-bottom: 1px solid var(--border);
   padding: var(--space-4) 0;
 }
-
-.faq-item:last-child { border-bottom: none; }
 
 .faq-question {
   display: flex;

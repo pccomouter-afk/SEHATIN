@@ -48,5 +48,8 @@
 }
 
 body.keyboard-open .bottom-nav {
-  display: none;
-}
+   position: fixed;
+   bottom: 0;
+   display: flex;
+   padding-bottom: env(safe-area-inset-bottom);
+ }
